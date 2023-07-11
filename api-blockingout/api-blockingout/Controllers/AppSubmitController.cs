@@ -44,7 +44,7 @@ namespace api_rate.Controllers
                 if (valFireApp)
                 {
                     // App Save if CertID not available
-                    if (objBlockingOut.ID == null)
+                    if (objBlockingOut.ID == 0)
                     {
                         //Set applied date
                         objBlockingOut.AppliedDate = _getDate.GetFormattedDate(DateTime.Now).ToString("yyyy/MM/dd HH:mm").Trim();

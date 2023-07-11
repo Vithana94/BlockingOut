@@ -99,7 +99,7 @@ namespace api_rate.Helpers
             }
 
             //Rate Number 
-            if (objBlockingOut.RateNo == null || objBlockingOut.RateNo == "")
+            if (objBlockingOut.AssessmentNo == null || objBlockingOut.AssessmentNo == "")
             {
                 returnMsg.ReturnValue = "Error";
                 returnMsg.ReturnMessage = "Invalid Rate Number.";
@@ -131,7 +131,7 @@ namespace api_rate.Helpers
             }
 
             //Land Plan 
-            if (objBlockingOut.LandPlan == null || objBlockingOut.LandPlan == "")
+            if (objBlockingOut.OriginalPlan == null || objBlockingOut.OriginalPlan == "")
             {
                 returnMsg.ReturnValue = "Error";
                 returnMsg.ReturnMessage = "Invalid Land Plan.";
@@ -200,28 +200,53 @@ namespace api_rate.Helpers
 
                     if (this.mySqlCon != null)
                     {
-                        strSql = "INSERT INTO tbl_blockingout_applications( AppId ,UserId ,Applicant ,Address ,Email ,Telephone ,RateNo ,Location ,DivisionNo ,Street ,LandPlan ,SizeOfLand ,ElecBoardApp ,WaterBoardApp ,Entrance ,IfBuilDiv ,DatesofDev ,AppliedDate ,AppRejDate ,ExpDate)VALUES('@AppId' ,'@UserId'  ,'@Applicant'  ,'@Address' ,'@Email'  ,'@Telephone'  ,'@RateNo'  ,'@Location'  ,'@DivisionNo' ,'@Street'  ,'@LandPlan'  ,'@SizeOfLand'  ,'@ElecBoardApp'  ,'@WaterBoardApp'  ,'@Entrance'  ,'@IfBuilDiv'  ,'@DatesofDev' ,'@AppliedDate'  ,'@AppRejDate'  ,'@ExpDate' );";
+                        strSql = "INSERT INTO tbl_blockingout_applications( AppId ,UserId ,Applicant ,Address ,Email ,Telephone ,Location ,AssessmentNo ,Street ,DivisionNo ,SurvPlanNo ,Surveyor ,SizeOfLand ,CurrentUse ,DevLandBlock ,LandFill ,LevelsOfRoad ,AttLandDevCorp ,IfAggriLand ,AttGoviJana ,DevResMatters ,DevComMatters ,DevIndMatters ,DevOutMatters ,DevGrounds ,DevStreets ,DevOther ,InfWaterExist ,InfWaterProp ,InfEffExist ,InfEffProp ,InfDrainExist ,InfDrainProp ,InfElecExist ,InfElecProp ,IfBuilDiv ,DatesofDev ,OriginalPlan ,MoreThanHectare ,ElecBoardApp ,WaterBoardApp ,Entrance ,AppliedDate ,AppRejDate ,ExpDate) VALUES (@AppId ,@UserId ,@Applicant ,@Address ,@Email ,@Telephone ,@Location ,@AssessmentNo ,@Street ,@DivisionNo ,@SurvPlanNo ,@Surveyor ,@SizeOfLand ,@CurrentUse ,@DevLandBlock ,@LandFill ,@LevelsOfRoad ,@AttLandDevCorp ,@IfAggriLand ,@AttGoviJana ,@DevResMatters ,@DevComMatters ,@DevIndMatters ,@DevOutMatters ,@DevGrounds ,@DevStreets ,@DevOther ,@InfWaterExist ,@InfWaterProp ,@InfEffExist ,@InfEffProp ,@InfDrainExist ,@InfDrainProp ,@InfElecExist ,@InfElecProp ,@IfBuilDiv ,@DatesofDev ,@OriginalPlan ,@MoreThanHectare ,@ElecBoardApp ,@WaterBoardApp ,@Entrance ,@AppliedDate ,@AppRejDate ,@ExpDate); UPDATE tbl_blockingout_index SET NextApplicationId=(NextApplicationId + 1);";
                         cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
-                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.AppID.ToString().Trim());
-                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.UserID.ToString().Trim());
-                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.Applicant.ToString().Trim());
-                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.Address.ToString().Trim());
-                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.Email.ToString().Trim());
-                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.Telephone.ToString().Trim());
-                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.RateNo.ToString().Trim());
-                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.Location.ToString().Trim());
-                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.DivisionNo.ToString().Trim());
-                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.Street.ToString().Trim());
-                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.LandPlan.ToString().Trim());
-                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.SizeOfLand.ToString().Trim());
-                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.ElecBoardApp.ToString().Trim());
-                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.WaterBoardApp.ToString().Trim());
-                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.Entrance.ToString().Trim());
-                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.IfBuilDiv.ToString().Trim());
-                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.DatesofDev.ToString().Trim());
-                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.AppliedDate.ToString().Trim());
-                        cmd.Parameters.AddWithValue("@CertificateId", "");
-                        cmd.Parameters.AddWithValue("@CertificateId", "");                        
+                        cmd.Parameters.AddWithValue("@AppId", objBlockingOut.AppID.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@UserID", objBlockingOut.UserID.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@Applicant", objBlockingOut.Applicant.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@Address", objBlockingOut.Address.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@Email", objBlockingOut.Email.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@Telephone", objBlockingOut.Telephone.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@Location", objBlockingOut.Location.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@AssessmentNo", objBlockingOut.AssessmentNo.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@Street", objBlockingOut.Street.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@DivisionNo", objBlockingOut.DivisionNo.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@SurvPlanNo", objBlockingOut.SurvPlanNo.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@Surveyor", "");
+                        cmd.Parameters.AddWithValue("@SizeOfLand", objBlockingOut.SizeOfLand.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@CurrentUse", objBlockingOut.CurrentUse.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@DevLandBlock", objBlockingOut.DevLandBlock.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@LandFill", objBlockingOut.LandFill.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@LevelsOfRoad", objBlockingOut.LevelsOfRoad.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@AttLandDevCorp", objBlockingOut.AttLandDevCorp.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@IfAggriLand", objBlockingOut.IfAggriLand.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@AttGoviJana", objBlockingOut.AttGoviJana.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@DevResMatters", objBlockingOut.DevResMatters.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@DevComMatters", objBlockingOut.DevComMatters.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@DevIndMatters", objBlockingOut.DevIndMatters.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@DevOutMatters", objBlockingOut.DevOutMatters.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@DevGrounds", objBlockingOut.DevGrounds.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@DevStreets", objBlockingOut.DevStreets.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@DevOther", objBlockingOut.DevOther.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@InfWaterExist", objBlockingOut.InfWaterExist.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@InfWaterProp", objBlockingOut.InfWaterProp.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@InfEffExist", objBlockingOut.InfEffExist.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@InfEffProp", objBlockingOut.InfEffProp.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@InfDrainExist", objBlockingOut.InfDrainExist.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@InfDrainProp", objBlockingOut.InfDrainProp.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@InfElecExist", objBlockingOut.InfElecExist.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@InfElecProp", objBlockingOut.InfElecProp.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@IfBuilDiv", objBlockingOut.IfBuilDiv.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@DatesofDev", objBlockingOut.DatesofDev.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@OriginalPlan", objBlockingOut.OriginalPlan.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@MoreThanHectare", objBlockingOut.MoreThanHectare.ToString().Trim());                        
+                        cmd.Parameters.AddWithValue("@ElecBoardApp", objBlockingOut.ElecBoardApp.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@WaterBoardApp", objBlockingOut.WaterBoardApp.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@Entrance", objBlockingOut.Entrance.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@AppliedDate", objBlockingOut.AppliedDate.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@AppRejDate", "");
+                        cmd.Parameters.AddWithValue("@ExpDate", "");                        
                         cmd.ExecuteNonQuery();
                         isSaved = true;
 
@@ -276,7 +301,7 @@ namespace api_rate.Helpers
                     }
                     if (this.mySqlCon != null)
                     {
-                        strSql = "SELECT * FROM tbl_firecertificate_index;";
+                        strSql = "SELECT * FROM tbl_blockingout_index;";
                         da = new MySqlDataAdapter(strSql, this.mySqlCon);
                         ds = new DataSet();
                         da.Fill(ds, "Application");
