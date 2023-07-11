@@ -22,391 +22,403 @@ namespace api_rate.Helpers
         private MySqlDataAdapter da;
         private Connection_Main objConMain;
 
-        // Get one Fire application by its Id  
-        //public FireCertificateApplication GetApplicationById(FireCertificateApplication objApplication, ref ReturnMsgInfo returnMsg)
-        //{
-        //    FireCertificateApplication objFireApplication = new FireCertificateApplication();
-        //    this.objConMain = new Connection_Main();
+        // Get a Blocking Out application by its Id  
+        public BlockingOutApp GetApplicationById(BlockingOutApp objApplication, ref ReturnMsgInfo returnMsg)
+        {
+            BlockingOutApp objRetBlockingOut = new BlockingOutApp();
+            this.objConMain = new Connection_Main();
 
-        //    string connString = this.objConMain.Get_Main_Connection(objApplication.ClientID);
+            string connString = this.objConMain.Get_Main_Connection(objApplication.ClientID);
 
-        //    if (connString == null || connString == "")
-        //    {
-        //        returnMsg.ReturnValue = "Error";
-        //        returnMsg.ReturnMessage = "Connection not found";
-        //    }
-        //    else
-        //    {
-        //        try
-        //        {
-        //            this.mySqlCon = new MySqlConnection(connString);
-        //            if (this.mySqlCon.State.ToString() != "Open")
-        //            {
-        //                this.mySqlCon.Open();
-        //            }
-        //            else
-        //            {
-        //                returnMsg.ReturnValue = "Error";
-        //                returnMsg.ReturnValue = "Connectoin was already opened.";
-        //            }
-        //            if (this.mySqlCon != null)
-        //            {
-        //                strSql = "SELECT * FROM tbl_firecertificate_application WHERE Id = '" + objApplication.Id + "';";
-        //                da = new MySqlDataAdapter(strSql, this.mySqlCon);
-        //                ds = new DataSet();
-        //                da.Fill(ds, "FireApplication");
-        //                dt = ds.Tables["FireApplication"];
-        //                if (dt.Rows.Count > 0)
-        //                {
-        //                    foreach (DataRow dtRow in dt.Rows)
-        //                    {
-        //                        FireCertificateApplication objFireAppDetails = new Models.FireCertificateApplication();
-        //                        objFireAppDetails.Id = (int)dtRow["Id"];
-        //                        objFireAppDetails.CertificateId = dtRow["CertificateId"].ToString().Trim();
-        //                        objFireAppDetails.user = dtRow["user"].ToString().Trim();
-        //                        objFireAppDetails.CompanyName = dtRow["CompanyName"].ToString().Trim();
-        //                        objFireAppDetails.Address = dtRow["Address"].ToString().Trim();
-        //                        objFireAppDetails.Telephone = dtRow["Telephone"].ToString().Trim();
-        //                        objFireAppDetails.DistanceFromCouncil = dtRow["DistanceFromCouncil"].ToString().Trim();
-        //                        objFireAppDetails.NatureOfBusiness = dtRow["NatureOfBusiness"].ToString().Trim();
-        //                        objFireAppDetails.BuildingDescription = dtRow["BuildingDescription"].ToString().Trim();
-        //                        objFireAppDetails.BuildingPlan = dtRow["BuildingPlan"].ToString().Trim();
-        //                        objFireAppDetails.TotalLand = dtRow["TotalLand"].ToString().Trim();
-        //                        objFireAppDetails.RoadFromCouncil = dtRow["RoadFromCouncil"].ToString().Trim();
-        //                        objFireAppDetails.OwnerName = dtRow["OwnerName"].ToString().Trim();
-        //                        objFireAppDetails.CurrentFirePlan = dtRow["CurrentFirePlan"].ToString().Trim();
-        //                        objFireAppDetails.Status = dtRow["Status"].ToString().Trim();
-        //                        objFireAppDetails.CollectMethod = dtRow["CollectMethod"].ToString().Trim();
-        //                        objFireAppDetails.Email = dtRow["Email"].ToString().Trim();
-        //                        objFireAppDetails.SupervisorVisited = dtRow["superVisit"].ToString().Trim();
-        //                        var appDate = (DateTime)dtRow["DateApplied"];
-        //                        objFireAppDetails.DateApplied = appDate.ToString("yyyy-MM-dd");
+            if (connString == null || connString == "")
+            {
+                returnMsg.ReturnValue = "Error";
+                returnMsg.ReturnMessage = "Connection not found";
+            }
+            else
+            {
+                try
+                {
+                    this.mySqlCon = new MySqlConnection(connString);
+                    if (this.mySqlCon.State.ToString() != "Open")
+                    {
+                        this.mySqlCon.Open();
+                    }
+                    else
+                    {
+                        returnMsg.ReturnValue = "Error";
+                        returnMsg.ReturnValue = "Connectoin was already opened.";
+                    }
+                    if (this.mySqlCon != null)
+                    {
+                        strSql = "SELECT * FROM tbl_blockingout_applications WHERE Id = '" + objApplication.ID + "';";
+                        da = new MySqlDataAdapter(strSql, this.mySqlCon);
+                        ds = new DataSet();
+                        da.Fill(ds, "BlockingOut");
+                        dt = ds.Tables["BlockingOut"];
+                        if (dt.Rows.Count > 0)
+                        {
+                            foreach (DataRow dtRow in dt.Rows)
+                            {
+                                BlockingOutApp objBlockingOutDetails = new Models.BlockingOutApp();
 
-        //                        var revDate = (DateTime)dtRow["DateReviewed"];
-        //                        if (revDate == DateTime.MinValue)
-        //                        {
-        //                            objFireAppDetails.DateReviewed = "";
-        //                        }
-        //                        else
-        //                        {
-        //                            objFireAppDetails.DateReviewed = revDate.ToString("yyyy-MM-dd");
-        //                        }
+                                objBlockingOutDetails.ID = (int)dtRow["Id"];
+                                objBlockingOutDetails.AppID = dtRow["AppId"].ToString().Trim();
+                                objBlockingOutDetails.UserID = dtRow["UserId"].ToString().Trim();
+                                objBlockingOutDetails.Applicant = dtRow["Applicant"].ToString().Trim();
+                                objBlockingOutDetails.Address = dtRow["Address"].ToString().Trim();
+                                objBlockingOutDetails.Email = dtRow["Email"].ToString().Trim();
+                                objBlockingOutDetails.Telephone = dtRow["Telephone"].ToString().Trim();
+                                objBlockingOutDetails.Location = dtRow["Location"].ToString().Trim();
+                                objBlockingOutDetails.AssessmentNo = dtRow["AssessmentNo"].ToString().Trim();
+                                objBlockingOutDetails.Street = dtRow["Street"].ToString().Trim();
+                                objBlockingOutDetails.DivisionNo = dtRow["DivisionNo"].ToString().Trim();
+                                objBlockingOutDetails.SurvPlanNo = dtRow["SurvPlanNo"].ToString().Trim();
+                                objBlockingOutDetails.Surveyor = dtRow["Surveyor"].ToString().Trim();
+                                objBlockingOutDetails.SizeOfLand = dtRow["SizeOfLand"].ToString().Trim();
+                                objBlockingOutDetails.CurrentUse = dtRow["CurrentUse"].ToString().Trim();
+                                objBlockingOutDetails.DevLandBlock = dtRow["DevLandBlock"].ToString().Trim();
+                                objBlockingOutDetails.LandFill = dtRow["LandFill"].ToString().Trim();
+                                objBlockingOutDetails.LevelsOfRoad = dtRow["LevelsOfRoad"].ToString().Trim();
+                                objBlockingOutDetails.AttLandDevCorp = dtRow["AttLandDevCorp"].ToString().Trim();
+                                objBlockingOutDetails.IfAggriLand = dtRow["IfAggriLand"].ToString().Trim();
+                                objBlockingOutDetails.AttGoviJana = dtRow["AttGoviJana"].ToString().Trim();
+                                objBlockingOutDetails.DevResMatters = dtRow["DevResMatters"].ToString().Trim();
+                                objBlockingOutDetails.DevComMatters = dtRow["DevComMatters"].ToString().Trim();
+                                objBlockingOutDetails.DevIndMatters = dtRow["DevIndMatters"].ToString().Trim();
+                                objBlockingOutDetails.DevOutMatters = dtRow["DevOutMatters"].ToString().Trim();
+                                objBlockingOutDetails.DevGrounds = dtRow["DevGrounds"].ToString().Trim();
+                                objBlockingOutDetails.DevStreets = dtRow["DevStreets"].ToString().Trim();
+                                objBlockingOutDetails.DevOther = dtRow["DevOther"].ToString().Trim();
+                                objBlockingOutDetails.InfWaterExist = dtRow["InfWaterExist"].ToString().Trim();
+                                objBlockingOutDetails.InfWaterProp = dtRow["InfWaterProp"].ToString().Trim();
+                                objBlockingOutDetails.InfEffExist = dtRow["InfEffExist"].ToString().Trim();
+                                objBlockingOutDetails.InfEffProp = dtRow["InfEffProp"].ToString().Trim();
+                                objBlockingOutDetails.InfDrainExist = dtRow["InfDrainExist"].ToString().Trim();
+                                objBlockingOutDetails.InfDrainProp = dtRow["InfDrainProp"].ToString().Trim();
+                                objBlockingOutDetails.InfElecExist = dtRow["InfElecExist"].ToString().Trim();
+                                objBlockingOutDetails.InfElecProp = dtRow["InfElecProp"].ToString().Trim();
+                                objBlockingOutDetails.IfBuilDiv = dtRow["IfBuilDiv"].ToString().Trim();
+                                objBlockingOutDetails.DatesofDev = dtRow["DatesofDev"].ToString().Trim();
+                                objBlockingOutDetails.OriginalPlan = dtRow["OriginalPlan"].ToString().Trim();
+                                objBlockingOutDetails.MoreThanHectare = dtRow["MoreThanHectare"].ToString().Trim();
+                                objBlockingOutDetails.ElecBoardApp = dtRow["ElecBoardApp"].ToString().Trim();
+                                objBlockingOutDetails.WaterBoardApp = dtRow["WaterBoardApp"].ToString().Trim();
+                                objBlockingOutDetails.Entrance = dtRow["Entrance"].ToString().Trim();
 
-        //                        var issDate = (DateTime)dtRow["DateIssued"];
-        //                        if (issDate == DateTime.MinValue)
-        //                        {
-        //                            objFireAppDetails.DateIssued = "";
-        //                        }
-        //                        else
-        //                        {
-        //                            objFireAppDetails.DateIssued = issDate.ToString("yyyy-MM-dd");
-        //                        }
+                                var appDate = (DateTime)dtRow["AppliedDate"];
+                                objBlockingOutDetails.AppliedDate = appDate.ToString("yyyy/MM/dd HH:mm").Trim();
 
-        //                        var appRejDate = (DateTime)dtRow["DateAppRej"];
-        //                        if (appRejDate == DateTime.MinValue)
-        //                        {
-        //                            objFireAppDetails.DateAppRej = "";
-        //                        }
-        //                        else
-        //                        {
-        //                            objFireAppDetails.DateAppRej = appRejDate.ToString("yyyy-MM-dd");
-        //                        }
+                                var appRejDate = (DateTime)dtRow["AppRejDate"];
+                                if (appRejDate == DateTime.MinValue)
+                                {
+                                    objBlockingOutDetails.AppRejDate = "";
+                                }
+                                else
+                                {
+                                    objBlockingOutDetails.AppRejDate = appRejDate.ToString("yyyy/MM/dd HH:mm");
+                                }
 
-        //                        var actRevDate = (DateTime)dtRow["DateActReview"];
-        //                        if (actRevDate == DateTime.MinValue || actRevDate == null)
-        //                        {
-        //                            objFireAppDetails.DateActReview = "";
-        //                        }
-        //                        else
-        //                        {
-        //                            objFireAppDetails.DateActReview = actRevDate.ToString("yyyy-MM-dd");
-        //                        }
+                                var expDate = (DateTime)dtRow["AppRejDate"];
+                                if (expDate == DateTime.MinValue)
+                                {
+                                    objBlockingOutDetails.ExpDate = "";
+                                }
+                                else
+                                {
+                                    objBlockingOutDetails.ExpDate = expDate.ToString("yyyy/MM/dd HH:mm");
+                                }
 
-        //                        objFireAppDetails.Supervisor = dtRow["Supervisor"].ToString().Trim();
-        //                        objFireAppDetails.RejectReason = dtRow["RejectReason"].ToString().Trim();
-        //                        objFireApplication = objFireAppDetails;
-        //                    }
-        //                    returnMsg.ReturnValue = "OK";
-        //                    returnMsg.ReturnMessage = "Data Found";
-        //                }
-        //                else
-        //                {
-        //                    returnMsg.ReturnValue = "Error";
-        //                    returnMsg.ReturnMessage = "No data found";
-        //                }
-        //            }
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            returnMsg.ReturnValue = "Error";
-        //            returnMsg.ReturnMessage = ex.Message;
-        //        }
-        //        if (this.mySqlCon != null)
-        //        {
-        //            this.mySqlCon.Close();
-        //        }
-        //    }
+                                objRetBlockingOut = objBlockingOutDetails;
+                            }
+                            returnMsg.ReturnValue = "OK";
+                            returnMsg.ReturnMessage = "Data Found";
+                        }
+                        else
+                        {
+                            returnMsg.ReturnValue = "Error";
+                            returnMsg.ReturnMessage = "No data found";
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    returnMsg.ReturnValue = "Error";
+                    returnMsg.ReturnMessage = ex.Message;
+                }
+                if (this.mySqlCon != null)
+                {
+                    this.mySqlCon.Close();
+                }
+            }
 
-        //    return objFireApplication;
-        //}
+            return objRetBlockingOut;
+        }
 
-        // Get Application by Certificate Id
-        //public FireCertificateApplication GetApplicationByCertId(FireCertificateApplication objApplication, ref ReturnMsgInfo returnMsg)
-        //{
-        //    FireCertificateApplication objFireApplication = new FireCertificateApplication();
-        //    this.objConMain = new Connection_Main();
+        // Get a Blocking Out application by App Id
+        public BlockingOutApp GetApplicationByAppId(BlockingOutApp objApplication, ref ReturnMsgInfo returnMsg)
+        {
+            BlockingOutApp objRetBlockingOut = new BlockingOutApp();
+            this.objConMain = new Connection_Main();
 
-        //    string connString = this.objConMain.Get_Main_Connection(objApplication.ClientID);
+            string connString = this.objConMain.Get_Main_Connection(objApplication.ClientID);
 
-        //    if (connString == null || connString == "")
-        //    {
-        //        returnMsg.ReturnValue = "Error";
-        //        returnMsg.ReturnMessage = "Connection not found";
-        //    }
-        //    else
-        //    {
-        //        try
-        //        {
-        //            this.mySqlCon = new MySqlConnection(connString);
-        //            if (this.mySqlCon.State.ToString() != "Open")
-        //            {
-        //                this.mySqlCon.Open();
-        //            }
-        //            else
-        //            {
-        //                returnMsg.ReturnValue = "Error";
-        //                returnMsg.ReturnValue = "Connectoin was already opened.";
-        //            }
-        //            if (this.mySqlCon != null)
-        //            {
-        //                strSql = "SELECT * FROM tbl_firecertificate_application WHERE CertificateId = '" + objApplication.CertificateId + "';";
-        //                da = new MySqlDataAdapter(strSql, this.mySqlCon);
-        //                ds = new DataSet();
-        //                da.Fill(ds, "FireApplication");
-        //                dt = ds.Tables["FireApplication"];
-        //                if (dt.Rows.Count > 0)
-        //                {
-        //                    foreach (DataRow dtRow in dt.Rows)
-        //                    {
-        //                        FireCertificateApplication objFireAppDetails = new Models.FireCertificateApplication();
-        //                        objFireAppDetails.Id = (int)dtRow["Id"];
-        //                        objFireAppDetails.CertificateId = dtRow["CertificateId"].ToString().Trim();
-        //                        objFireAppDetails.CompanyName = dtRow["CompanyName"].ToString().Trim();
-        //                        objFireAppDetails.Address = dtRow["Address"].ToString().Trim();
-        //                        objFireAppDetails.Telephone = dtRow["Telephone"].ToString().Trim();
-        //                        objFireAppDetails.DistanceFromCouncil = dtRow["DistanceFromCouncil"].ToString().Trim();
-        //                        objFireAppDetails.NatureOfBusiness = dtRow["NatureOfBusiness"].ToString().Trim();
-        //                        objFireAppDetails.BuildingDescription = dtRow["BuildingDescription"].ToString().Trim();
-        //                        objFireAppDetails.BuildingPlan = dtRow["BuildingPlan"].ToString().Trim();
-        //                        objFireAppDetails.TotalLand = dtRow["TotalLand"].ToString().Trim();
-        //                        objFireAppDetails.RoadFromCouncil = dtRow["RoadFromCouncil"].ToString().Trim();
-        //                        objFireAppDetails.OwnerName = dtRow["OwnerName"].ToString().Trim();
-        //                        objFireAppDetails.CurrentFirePlan = dtRow["CurrentFirePlan"].ToString().Trim();
-        //                        objFireAppDetails.Status = dtRow["Status"].ToString().Trim();
-        //                        objFireAppDetails.CollectMethod = dtRow["CollectMethod"].ToString().Trim();
-        //                        objFireAppDetails.Email = dtRow["Email"].ToString().Trim();
-        //                        objFireAppDetails.SupervisorVisited = dtRow["superVisit"].ToString().Trim();
-        //                        var appDate = (DateTime)dtRow["DateApplied"];
-        //                        objFireAppDetails.DateApplied = appDate.ToString("yyyy-MM-dd");
-        //                        var revDate = (DateTime)dtRow["DateReviewed"];
-        //                        if (revDate == DateTime.MinValue)
-        //                        {
-        //                            objFireAppDetails.DateReviewed = "";
-        //                        }
-        //                        else
-        //                        {
-        //                            objFireAppDetails.DateReviewed = revDate.ToString("yyyy-MM-dd");
+            if (connString == null || connString == "")
+            {
+                returnMsg.ReturnValue = "Error";
+                returnMsg.ReturnMessage = "Connection not found";
+            }
+            else
+            {
+                try
+                {
+                    this.mySqlCon = new MySqlConnection(connString);
+                    if (this.mySqlCon.State.ToString() != "Open")
+                    {
+                        this.mySqlCon.Open();
+                    }
+                    else
+                    {
+                        returnMsg.ReturnValue = "Error";
+                        returnMsg.ReturnValue = "Connectoin was already opened.";
+                    }
+                    if (this.mySqlCon != null)
+                    {
+                        strSql = "SELECT * FROM tbl_blockingout_applications WHERE AppId = '" + objApplication.AppID + "';";
+                        da = new MySqlDataAdapter(strSql, this.mySqlCon);
+                        ds = new DataSet();
+                        da.Fill(ds, "BlockingOut");
+                        dt = ds.Tables["BlockingOut"];
+                        if (dt.Rows.Count > 0)
+                        {
+                            foreach (DataRow dtRow in dt.Rows)
+                            {
+                                BlockingOutApp objBlockingOutDetails = new Models.BlockingOutApp();
 
-        //                        }
+                                objBlockingOutDetails.ID = (int)dtRow["Id"];
+                                objBlockingOutDetails.AppID = dtRow["AppId"].ToString().Trim();
+                                objBlockingOutDetails.UserID = dtRow["UserId"].ToString().Trim();
+                                objBlockingOutDetails.Applicant = dtRow["Applicant"].ToString().Trim();
+                                objBlockingOutDetails.Address = dtRow["Address"].ToString().Trim();
+                                objBlockingOutDetails.Email = dtRow["Email"].ToString().Trim();
+                                objBlockingOutDetails.Telephone = dtRow["Telephone"].ToString().Trim();
+                                objBlockingOutDetails.Location = dtRow["Location"].ToString().Trim();
+                                objBlockingOutDetails.AssessmentNo = dtRow["AssessmentNo"].ToString().Trim();
+                                objBlockingOutDetails.Street = dtRow["Street"].ToString().Trim();
+                                objBlockingOutDetails.DivisionNo = dtRow["DivisionNo"].ToString().Trim();
+                                objBlockingOutDetails.SurvPlanNo = dtRow["SurvPlanNo"].ToString().Trim();
+                                objBlockingOutDetails.Surveyor = dtRow["Surveyor"].ToString().Trim();
+                                objBlockingOutDetails.SizeOfLand = dtRow["SizeOfLand"].ToString().Trim();
+                                objBlockingOutDetails.CurrentUse = dtRow["CurrentUse"].ToString().Trim();
+                                objBlockingOutDetails.DevLandBlock = dtRow["DevLandBlock"].ToString().Trim();
+                                objBlockingOutDetails.LandFill = dtRow["LandFill"].ToString().Trim();
+                                objBlockingOutDetails.LevelsOfRoad = dtRow["LevelsOfRoad"].ToString().Trim();
+                                objBlockingOutDetails.AttLandDevCorp = dtRow["AttLandDevCorp"].ToString().Trim();
+                                objBlockingOutDetails.IfAggriLand = dtRow["IfAggriLand"].ToString().Trim();
+                                objBlockingOutDetails.AttGoviJana = dtRow["AttGoviJana"].ToString().Trim();
+                                objBlockingOutDetails.DevResMatters = dtRow["DevResMatters"].ToString().Trim();
+                                objBlockingOutDetails.DevComMatters = dtRow["DevComMatters"].ToString().Trim();
+                                objBlockingOutDetails.DevIndMatters = dtRow["DevIndMatters"].ToString().Trim();
+                                objBlockingOutDetails.DevOutMatters = dtRow["DevOutMatters"].ToString().Trim();
+                                objBlockingOutDetails.DevGrounds = dtRow["DevGrounds"].ToString().Trim();
+                                objBlockingOutDetails.DevStreets = dtRow["DevStreets"].ToString().Trim();
+                                objBlockingOutDetails.DevOther = dtRow["DevOther"].ToString().Trim();
+                                objBlockingOutDetails.InfWaterExist = dtRow["InfWaterExist"].ToString().Trim();
+                                objBlockingOutDetails.InfWaterProp = dtRow["InfWaterProp"].ToString().Trim();
+                                objBlockingOutDetails.InfEffExist = dtRow["InfEffExist"].ToString().Trim();
+                                objBlockingOutDetails.InfEffProp = dtRow["InfEffProp"].ToString().Trim();
+                                objBlockingOutDetails.InfDrainExist = dtRow["InfDrainExist"].ToString().Trim();
+                                objBlockingOutDetails.InfDrainProp = dtRow["InfDrainProp"].ToString().Trim();
+                                objBlockingOutDetails.InfElecExist = dtRow["InfElecExist"].ToString().Trim();
+                                objBlockingOutDetails.InfElecProp = dtRow["InfElecProp"].ToString().Trim();
+                                objBlockingOutDetails.IfBuilDiv = dtRow["IfBuilDiv"].ToString().Trim();
+                                objBlockingOutDetails.DatesofDev = dtRow["DatesofDev"].ToString().Trim();
+                                objBlockingOutDetails.OriginalPlan = dtRow["OriginalPlan"].ToString().Trim();
+                                objBlockingOutDetails.MoreThanHectare = dtRow["MoreThanHectare"].ToString().Trim();
+                                objBlockingOutDetails.ElecBoardApp = dtRow["ElecBoardApp"].ToString().Trim();
+                                objBlockingOutDetails.WaterBoardApp = dtRow["WaterBoardApp"].ToString().Trim();
+                                objBlockingOutDetails.Entrance = dtRow["Entrance"].ToString().Trim();
 
-        //                        var issDate = (DateTime)dtRow["DateIssued"];
-        //                        if (issDate == DateTime.MinValue)
-        //                        {
-        //                            objFireAppDetails.DateIssued = "";
-        //                        }
-        //                        else
-        //                        {
-        //                            objFireAppDetails.DateIssued = issDate.ToString("yyyy-MM-dd");
-        //                        }
+                                var appDate = (DateTime)dtRow["AppliedDate"];
+                                objBlockingOutDetails.AppliedDate = appDate.ToString("yyyy/MM/dd HH:mm").Trim();
 
-        //                        var appRejDate = (DateTime)dtRow["DateAppRej"];
-        //                        if (appRejDate == DateTime.MinValue)
-        //                        {
-        //                            objFireAppDetails.DateAppRej = "";
-        //                        }
-        //                        else
-        //                        {
-        //                            objFireAppDetails.DateAppRej = appRejDate.ToString("yyyy-MM-dd");
-        //                        }
+                                var appRejDate = (DateTime)dtRow["AppRejDate"];
+                                if (appRejDate == DateTime.MinValue)
+                                {
+                                    objBlockingOutDetails.AppRejDate = "";
+                                }
+                                else
+                                {
+                                    objBlockingOutDetails.AppRejDate = appRejDate.ToString("yyyy/MM/dd HH:mm");
+                                }
 
-        //                        var actRevDate = (DateTime)dtRow["DateActReview"];
-        //                        if (actRevDate == DateTime.MinValue || actRevDate == null)
-        //                        {
-        //                            objFireAppDetails.DateActReview = "";
-        //                        }
-        //                        else
-        //                        {
-        //                            objFireAppDetails.DateActReview = actRevDate.ToString("yyyy-MM-dd");
-        //                        }
+                                var expDate = (DateTime)dtRow["AppRejDate"];
+                                if (expDate == DateTime.MinValue)
+                                {
+                                    objBlockingOutDetails.ExpDate = "";
+                                }
+                                else
+                                {
+                                    objBlockingOutDetails.ExpDate = expDate.ToString("yyyy/MM/dd HH:mm");
+                                }
 
-        //                        objFireAppDetails.Supervisor = dtRow["Supervisor"].ToString().Trim();
-        //                        objFireAppDetails.RejectReason = dtRow["RejectReason"].ToString().Trim();
+                                objRetBlockingOut = objBlockingOutDetails;
+                            }
+                            returnMsg.ReturnValue = "OK";
+                            returnMsg.ReturnMessage = "Data Found";
+                        }
+                        else
+                        {
+                            returnMsg.ReturnValue = "Error";
+                            returnMsg.ReturnMessage = "No data found";
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    returnMsg.ReturnValue = "Error";
+                    returnMsg.ReturnMessage = ex.Message;
+                }
+                if (this.mySqlCon != null)
+                {
+                    this.mySqlCon.Close();
+                }
+            }
 
-        //                        objFireApplication = objFireAppDetails;
-        //                    }
-        //                    returnMsg.ReturnValue = "OK";
-        //                    returnMsg.ReturnMessage = "Data Found";
-        //                }
-        //                else
-        //                {
-        //                    returnMsg.ReturnValue = "Error";
-        //                    returnMsg.ReturnMessage = "No data found";
-        //                }
-        //            }
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            returnMsg.ReturnValue = "Error";
-        //            returnMsg.ReturnMessage = ex.Message;
-        //        }
-        //        if (this.mySqlCon != null)
-        //        {
-        //            this.mySqlCon.Close();
-        //        }
-        //    }
+            return objRetBlockingOut;
+        }
 
-        //    return objFireApplication;
-        //}
+        // Get List of Blocking Out applications by username
+        public List<BlockingOutApp> GetApplicationsByUserId(BlockingOutApp objApplication, ref ReturnMsgInfo returnMsg)
+        {
+            List<BlockingOutApp> lstRetBlockingOut = new List<BlockingOutApp>();
+            this.objConMain = new Connection_Main();
 
-        // Get List of fire applications by username
-        //public List<FireCertificateApplication> GetAppDetailsByUsr(FireCertificateApplication objFireApplication, ref ReturnMsgInfo returnMsg)
-        //{
-        //    List<FireCertificateApplication> lstFireApplication = new List<FireCertificateApplication>();
-        //    this.objConMain = new Connection_Main();
+            string connString = this.objConMain.Get_Main_Connection(objApplication.ClientID);
 
-        //    string conString = this.objConMain.Get_Main_Connection(objFireApplication.ClientID);
-        //    if (conString == null || conString == "")
-        //    {
-        //        returnMsg.ReturnValue = "Error";
-        //        returnMsg.ReturnMessage = "Connection not found.";
-        //    }
-        //    else
-        //    {
-        //        try
-        //        {
-        //            this.mySqlCon = new MySqlConnection(conString);
-        //            if (this.mySqlCon.State.ToString() != "Open")
-        //            {
-        //                this.mySqlCon.Open();
-        //            }
-        //            else
-        //            {
-        //                returnMsg.ReturnValue = "Error";
-        //                returnMsg.ReturnMessage = "Connection was already opened.";
-        //            }
-        //            if (this.mySqlCon != null)
-        //            {
-        //                strSql = "SELECT * FROM tbl_firecertificate_application WHERE User = '" + objFireApplication.user + "';";
-        //                da = new MySqlDataAdapter(strSql, this.mySqlCon);
-        //                ds = new DataSet();
-        //                da.Fill(ds, "Application");
-        //                dt = ds.Tables["Application"];
-        //                if (dt.Rows.Count > 0)
-        //                {
-        //                    foreach (DataRow dtRow in dt.Rows)
-        //                    {
-        //                        FireCertificateApplication objFireAppDetails = new Models.FireCertificateApplication();
-        //                        objFireAppDetails.Id = (int)dtRow["Id"];
-        //                        objFireAppDetails.CertificateId = dtRow["CertificateId"].ToString().Trim();
-        //                        objFireAppDetails.CompanyName = dtRow["CompanyName"].ToString().Trim();
-        //                        objFireAppDetails.Address = dtRow["Address"].ToString().Trim();
-        //                        objFireAppDetails.user = dtRow["user"].ToString().Trim();
-        //                        objFireAppDetails.Telephone = dtRow["Telephone"].ToString().Trim();
-        //                        objFireAppDetails.DistanceFromCouncil = dtRow["DistanceFromCouncil"].ToString().Trim();
-        //                        objFireAppDetails.NatureOfBusiness = dtRow["NatureOfBusiness"].ToString().Trim();
-        //                        objFireAppDetails.BuildingDescription = dtRow["BuildingDescription"].ToString().Trim();
-        //                        objFireAppDetails.BuildingPlan = dtRow["BuildingPlan"].ToString().Trim();
-        //                        objFireAppDetails.TotalLand = dtRow["TotalLand"].ToString().Trim();
-        //                        objFireAppDetails.RoadFromCouncil = dtRow["RoadFromCouncil"].ToString().Trim();
-        //                        objFireAppDetails.OwnerName = dtRow["OwnerName"].ToString().Trim();
-        //                        objFireAppDetails.CurrentFirePlan = dtRow["CurrentFirePlan"].ToString().Trim();
-        //                        objFireAppDetails.Email = dtRow["Email"].ToString().Trim();
-        //                        objFireAppDetails.SupervisorVisited = dtRow["superVisit"].ToString().Trim();
-        //                        objFireAppDetails.RejectReason = dtRow["RejectReason"].ToString().Trim();
-        //                        objFireAppDetails.Status = dtRow["Status"].ToString().Trim();
-        //                        objFireAppDetails.CollectMethod = dtRow["CollectMethod"].ToString().Trim();
-        //                        var appDate = (DateTime)dtRow["DateApplied"];
-        //                        objFireAppDetails.DateApplied = appDate.ToString("yyyy-MM-dd");
-        //                        var revDate = (DateTime)dtRow["DateReviewed"];
-        //                        if (revDate == DateTime.MinValue)
-        //                        {
-        //                            objFireAppDetails.DateReviewed = "";
-        //                        }
-        //                        else
-        //                        {
-        //                            objFireAppDetails.DateReviewed = revDate.ToString("yyyy-MM-dd");
+            if (connString == null || connString == "")
+            {
+                returnMsg.ReturnValue = "Error";
+                returnMsg.ReturnMessage = "Connection not found";
+            }
+            else
+            {
+                try
+                {
+                    this.mySqlCon = new MySqlConnection(connString);
+                    if (this.mySqlCon.State.ToString() != "Open")
+                    {
+                        this.mySqlCon.Open();
+                    }
+                    else
+                    {
+                        returnMsg.ReturnValue = "Error";
+                        returnMsg.ReturnValue = "Connectoin was already opened.";
+                    }
+                    if (this.mySqlCon != null)
+                    {
+                        strSql = "SELECT * FROM tbl_blockingout_applications WHERE UserId = '" + objApplication.UserID + "';";
+                        da = new MySqlDataAdapter(strSql, this.mySqlCon);
+                        ds = new DataSet();
+                        da.Fill(ds, "BlockingOut");
+                        dt = ds.Tables["BlockingOut"];
+                        if (dt.Rows.Count > 0)
+                        {
+                            foreach (DataRow dtRow in dt.Rows)
+                            {
+                                BlockingOutApp objBlockingOutDetails = new Models.BlockingOutApp();
 
-        //                        }
-        //                        var issDate = (DateTime)dtRow["DateIssued"];
-        //                        if (issDate == DateTime.MinValue)
-        //                        {
-        //                            objFireAppDetails.DateIssued = "";
-        //                        }
-        //                        else
-        //                        {
-        //                            objFireAppDetails.DateIssued = issDate.ToString("yyyy-MM-dd");
-        //                        }
+                                objBlockingOutDetails.ID = (int)dtRow["Id"];
+                                objBlockingOutDetails.AppID = dtRow["AppId"].ToString().Trim();
+                                objBlockingOutDetails.UserID = dtRow["UserId"].ToString().Trim();
+                                objBlockingOutDetails.Applicant = dtRow["Applicant"].ToString().Trim();
+                                objBlockingOutDetails.Address = dtRow["Address"].ToString().Trim();
+                                objBlockingOutDetails.Email = dtRow["Email"].ToString().Trim();
+                                objBlockingOutDetails.Telephone = dtRow["Telephone"].ToString().Trim();
+                                objBlockingOutDetails.Location = dtRow["Location"].ToString().Trim();
+                                objBlockingOutDetails.AssessmentNo = dtRow["AssessmentNo"].ToString().Trim();
+                                objBlockingOutDetails.Street = dtRow["Street"].ToString().Trim();
+                                objBlockingOutDetails.DivisionNo = dtRow["DivisionNo"].ToString().Trim();
+                                objBlockingOutDetails.SurvPlanNo = dtRow["SurvPlanNo"].ToString().Trim();
+                                objBlockingOutDetails.Surveyor = dtRow["Surveyor"].ToString().Trim();
+                                objBlockingOutDetails.SizeOfLand = dtRow["SizeOfLand"].ToString().Trim();
+                                objBlockingOutDetails.CurrentUse = dtRow["CurrentUse"].ToString().Trim();
+                                objBlockingOutDetails.DevLandBlock = dtRow["DevLandBlock"].ToString().Trim();
+                                objBlockingOutDetails.LandFill = dtRow["LandFill"].ToString().Trim();
+                                objBlockingOutDetails.LevelsOfRoad = dtRow["LevelsOfRoad"].ToString().Trim();
+                                objBlockingOutDetails.AttLandDevCorp = dtRow["AttLandDevCorp"].ToString().Trim();
+                                objBlockingOutDetails.IfAggriLand = dtRow["IfAggriLand"].ToString().Trim();
+                                objBlockingOutDetails.AttGoviJana = dtRow["AttGoviJana"].ToString().Trim();
+                                objBlockingOutDetails.DevResMatters = dtRow["DevResMatters"].ToString().Trim();
+                                objBlockingOutDetails.DevComMatters = dtRow["DevComMatters"].ToString().Trim();
+                                objBlockingOutDetails.DevIndMatters = dtRow["DevIndMatters"].ToString().Trim();
+                                objBlockingOutDetails.DevOutMatters = dtRow["DevOutMatters"].ToString().Trim();
+                                objBlockingOutDetails.DevGrounds = dtRow["DevGrounds"].ToString().Trim();
+                                objBlockingOutDetails.DevStreets = dtRow["DevStreets"].ToString().Trim();
+                                objBlockingOutDetails.DevOther = dtRow["DevOther"].ToString().Trim();
+                                objBlockingOutDetails.InfWaterExist = dtRow["InfWaterExist"].ToString().Trim();
+                                objBlockingOutDetails.InfWaterProp = dtRow["InfWaterProp"].ToString().Trim();
+                                objBlockingOutDetails.InfEffExist = dtRow["InfEffExist"].ToString().Trim();
+                                objBlockingOutDetails.InfEffProp = dtRow["InfEffProp"].ToString().Trim();
+                                objBlockingOutDetails.InfDrainExist = dtRow["InfDrainExist"].ToString().Trim();
+                                objBlockingOutDetails.InfDrainProp = dtRow["InfDrainProp"].ToString().Trim();
+                                objBlockingOutDetails.InfElecExist = dtRow["InfElecExist"].ToString().Trim();
+                                objBlockingOutDetails.InfElecProp = dtRow["InfElecProp"].ToString().Trim();
+                                objBlockingOutDetails.IfBuilDiv = dtRow["IfBuilDiv"].ToString().Trim();
+                                objBlockingOutDetails.DatesofDev = dtRow["DatesofDev"].ToString().Trim();
+                                objBlockingOutDetails.OriginalPlan = dtRow["OriginalPlan"].ToString().Trim();
+                                objBlockingOutDetails.MoreThanHectare = dtRow["MoreThanHectare"].ToString().Trim();
+                                objBlockingOutDetails.ElecBoardApp = dtRow["ElecBoardApp"].ToString().Trim();
+                                objBlockingOutDetails.WaterBoardApp = dtRow["WaterBoardApp"].ToString().Trim();
+                                objBlockingOutDetails.Entrance = dtRow["Entrance"].ToString().Trim();
 
-        //                        var appRejDate = (DateTime)dtRow["DateAppRej"];
-        //                        if (appRejDate == DateTime.MinValue)
-        //                        {
-        //                            objFireAppDetails.DateAppRej = "";
-        //                        }
-        //                        else
-        //                        {
-        //                            objFireAppDetails.DateAppRej = appRejDate.ToString("yyyy-MM-dd");
-        //                        }
+                                var appDate = (DateTime)dtRow["AppliedDate"];
+                                objBlockingOutDetails.AppliedDate = appDate.ToString("yyyy/MM/dd HH:mm").Trim();
 
-        //                        var actRevDate = (DateTime)dtRow["DateActReview"];
-        //                        if (actRevDate == DateTime.MinValue || actRevDate == null)
-        //                        {
-        //                            objFireAppDetails.DateActReview = "";
-        //                        }
-        //                        else
-        //                        {
-        //                            objFireAppDetails.DateActReview = actRevDate.ToString("yyyy-MM-dd");
-        //                        }
+                                var appRejDate = (DateTime)dtRow["AppRejDate"];
+                                if (appRejDate == DateTime.MinValue)
+                                {
+                                    objBlockingOutDetails.AppRejDate = "";
+                                }
+                                else
+                                {
+                                    objBlockingOutDetails.AppRejDate = appRejDate.ToString("yyyy/MM/dd HH:mm");
+                                }
 
-        //                        objFireAppDetails.Supervisor = dtRow["Supervisor"].ToString().Trim();
+                                var expDate = (DateTime)dtRow["AppRejDate"];
+                                if (expDate == DateTime.MinValue)
+                                {
+                                    objBlockingOutDetails.ExpDate = "";
+                                }
+                                else
+                                {
+                                    objBlockingOutDetails.ExpDate = expDate.ToString("yyyy/MM/dd HH:mm");
+                                }
 
-        //                        lstFireApplication.Add(objFireAppDetails);
-        //                    }
-        //                    returnMsg.ReturnValue = "OK";
-        //                    returnMsg.ReturnMessage = "Data found";
-        //                }
-        //                else
-        //                {
-        //                    returnMsg.ReturnValue = "Error";
-        //                    returnMsg.ReturnMessage = "No data found";
-        //                }
-        //            }
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            returnMsg.ReturnValue = "Error";
-        //            returnMsg.ReturnMessage = ex.Message;
-        //        }
-        //        finally
-        //        {
-        //            if (this.mySqlCon != null)
-        //            {
-        //                this.mySqlCon.Close();
-        //            }
-        //        }
-        //    }
-        //    return lstFireApplication;
-        //}
+                                lstRetBlockingOut.Add(objBlockingOutDetails);
+                            }
+                            returnMsg.ReturnValue = "OK";
+                            returnMsg.ReturnMessage = "Data Found";
+                        }
+                        else
+                        {
+                            returnMsg.ReturnValue = "Error";
+                            returnMsg.ReturnMessage = "No data found";
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    returnMsg.ReturnValue = "Error";
+                    returnMsg.ReturnMessage = ex.Message;
+                }
+                if (this.mySqlCon != null)
+                {
+                    this.mySqlCon.Close();
+                }
+            }
 
-        // Get List of all fire applications
+            return lstRetBlockingOut;
+        }
     }
 }

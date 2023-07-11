@@ -182,8 +182,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AppSubmitController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\FireAppByIdController.cs" />
-    <Compile Include="Controllers\FireAppByUserIdController.cs" />
+    <Compile Include="Controllers\BlockingOutByIdController.cs" />
+    <Compile Include="Controllers\BlockingOutListByUserIdController.cs" />
     <Compile Include="Controllers\SaveBankMsgController.cs" />
     <Compile Include="Filters\JwtCustomAuth.cs" />
     <Compile Include="Global.asax.cs">
@@ -214,7 +214,9 @@
     <Compile Include="Helpers\Utility.cs" />
     <Compile Include="Models\BankAPIInfo.cs" />
     <Compile Include="Models\BankReturnMessage.cs" />
+    <Compile Include="Models\BlockingListOutput.cs" />
     <Compile Include="Models\BlockingOutApp.cs" />
+    <Compile Include="Models\BlockingOutput.cs" />
     <Compile Include="Models\EmailInfo.cs" />
     <Compile Include="Models\ConnectionInfo.cs" />
     <Compile Include="Models\DatabaseDetailsInfo.cs" />
