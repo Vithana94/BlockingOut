@@ -20,14 +20,14 @@ namespace api_rate.Helpers
         private CommonFunctions objCmnFunctions = null;
         private MySqlCommand cmd = null;
 
-        // Validate Municipal Council Application
-        public bool ValidateApplication(FireCertificateApplication objFireAppDetails, ref ReturnMsgInfo returnMsg)
+        // Validate Blocking out application
+        public bool ValidateApplication(BlockingOutApp objBlockingOut, ref ReturnMsgInfo returnMsg)
         {
             bool IsSuccess = true;
             objCmnFunctions = new CommonFunctions();
 
             // ClientID
-            if (objFireAppDetails.ClientID == null || objFireAppDetails.ClientID == "")
+            if (objBlockingOut.ClientID == null || objBlockingOut.ClientID == "")
             {
                 returnMsg.ReturnValue = "Error";
                 returnMsg.ReturnMessage = "Invalid Client ID.";
@@ -35,7 +35,7 @@ namespace api_rate.Helpers
             }
 
             // User
-            if (objFireAppDetails.user == null || objFireAppDetails.user == "")
+            if (objBlockingOut.UserID == null || objBlockingOut.UserID == "")
             {
                 returnMsg.ReturnValue = "Error";
                 returnMsg.ReturnMessage = "Invalid User.";
@@ -43,15 +43,15 @@ namespace api_rate.Helpers
             }
 
             // Company name 
-            if (objFireAppDetails.CompanyName == null || objFireAppDetails.CompanyName == "")
+            if (objBlockingOut.Applicant == null || objBlockingOut.Applicant == "")
             {
                 returnMsg.ReturnValue = "Error";
-                returnMsg.ReturnMessage = "Invalid Company Name.";
+                returnMsg.ReturnMessage = "Invalid Applicant Name.";
                 IsSuccess = false;
             }
 
             // Address
-            if (objFireAppDetails.Address == null || objFireAppDetails.Address == "")
+            if (objBlockingOut.Address == null || objBlockingOut.Address == "")
             {
                 returnMsg.ReturnValue = "Error";
                 returnMsg.ReturnMessage = "Invalid Address.";
@@ -59,7 +59,7 @@ namespace api_rate.Helpers
             }
 
             // Telephone not null and validity
-            if (objFireAppDetails.Telephone == null || objFireAppDetails.Telephone == "")
+            if (objBlockingOut.Telephone == null || objBlockingOut.Telephone == "")
             {
                 returnMsg.ReturnValue = "Error";
                 returnMsg.ReturnMessage = "Invalid telephone number.";
@@ -67,19 +67,19 @@ namespace api_rate.Helpers
             }
             else
             {
-                if (objFireAppDetails.Telephone.ToString().Trim().Length != 10)
+                if (objBlockingOut.Telephone.ToString().Trim().Length != 10)
                 {
                     returnMsg.ReturnValue = "Error";
                     returnMsg.ReturnMessage = "Applicant's Mobile Number length should be 10.";
                     IsSuccess = false;
                 }
-                else if (objFireAppDetails.Telephone.ToString().Trim().StartsWith("0") == false)
+                else if (objBlockingOut.Telephone.ToString().Trim().StartsWith("07") == false)
                 {
                     returnMsg.ReturnValue = "Error";
-                    returnMsg.ReturnMessage = "Invalid format in Applicant's Mobile Number. (0XXXXXXXXX)";
+                    returnMsg.ReturnMessage = "Invalid format in Applicant's Mobile Number. (07XXXXXXXX)";
                     IsSuccess = false;
                 }
-                else if (objCmnFunctions.ValidatePhoneNoDigits(objFireAppDetails.Telephone.ToString().Trim()) == false)
+                else if (objCmnFunctions.ValidatePhoneNoDigits(objBlockingOut.Telephone.ToString().Trim()) == false)
                 {
                     returnMsg.ReturnValue = "Error";
                     returnMsg.ReturnMessage = "Applicant's Mobile Number should contain only digits.";
@@ -87,61 +87,10 @@ namespace api_rate.Helpers
                 }
             }
 
-            //Distance from council number input
-            if (objFireAppDetails.DistanceFromCouncil == null || Decimal.Parse(objFireAppDetails.DistanceFromCouncil) < 0)
-            {
-                returnMsg.ReturnValue = "Error";
-                returnMsg.ReturnMessage = "Invalid Distance value.";
-                IsSuccess = false;
-            }
-
-            //nature of business
-            if (objFireAppDetails.NatureOfBusiness == null || objFireAppDetails.NatureOfBusiness == "")
-            {
-                returnMsg.ReturnValue = "Error";
-                returnMsg.ReturnMessage = "Invalid Nature of Business.";
-                IsSuccess = false;
-            }
-
-            // Building plan attachment name 
-            if (objFireAppDetails.CertificateId == null || objFireAppDetails.CertificateId == "")
-            {
-                if (objFireAppDetails.BuildingPlan == null || objFireAppDetails.BuildingPlan == "")
-                {
-                    returnMsg.ReturnValue = "Error";
-                    returnMsg.ReturnMessage = "Building Plan is required.";
-                    IsSuccess = false;
-                }
-            }
-
-            // Total Land area
-            if (objFireAppDetails.TotalLand == null || Decimal.Parse(objFireAppDetails.TotalLand) < 0)
-            {
-                returnMsg.ReturnValue = "Error";
-                returnMsg.ReturnMessage = "Invalid Land value.";
-                IsSuccess = false;
-            }
-
-            // Road from council text
-            if (objFireAppDetails.RoadFromCouncil == null || objFireAppDetails.RoadFromCouncil == "")
-            {
-                returnMsg.ReturnValue = "Error";
-                returnMsg.ReturnMessage = "Road from Council is required.";
-                IsSuccess = false;
-            }
-
-            //Owner name text
-            if (objFireAppDetails.OwnerName == null || objFireAppDetails.OwnerName == "")
-            {
-                returnMsg.ReturnValue = "Error";
-                returnMsg.ReturnMessage = "Owner name is required.";
-                IsSuccess = false;
-            }
-
             // Email Validation
-            if (objFireAppDetails.Email != null && objFireAppDetails.Email != "" && objFireAppDetails.Email.Length > 0)
+            if (objBlockingOut.Email != null && objBlockingOut.Email != "" && objBlockingOut.Email.Length > 0)
             {
-                if (objCmnFunctions.IsValidEmail(objFireAppDetails.Email) == false)
+                if (objCmnFunctions.IsValidEmail(objBlockingOut.Email) == false)
                 {
                     returnMsg.ReturnValue = "Error";
                     returnMsg.ReturnMessage = "Invalid Applicant's Email Address.";
@@ -149,201 +98,87 @@ namespace api_rate.Helpers
                 }
             }
 
-            // Applicant Name
-            if (objFireAppDetails.ApplicantName == null || objFireAppDetails.ApplicantName == "")
+            //Rate Number 
+            if (objBlockingOut.RateNo == null || objBlockingOut.RateNo == "")
             {
                 returnMsg.ReturnValue = "Error";
-                returnMsg.ReturnMessage = "Invalid Applicant Name.";
+                returnMsg.ReturnMessage = "Invalid Rate Number.";
                 IsSuccess = false;
             }
 
-            // Owner Name
-            if (objFireAppDetails.BOwnerName == null || objFireAppDetails.BOwnerName == "")
+            //Location 
+            if (objBlockingOut.Location == null || objBlockingOut.Location == "")
             {
                 returnMsg.ReturnValue = "Error";
-                returnMsg.ReturnMessage = "Invalid Owner Name.";
+                returnMsg.ReturnMessage = "Invalid Location.";
                 IsSuccess = false;
             }
 
-            // Emergency Number
-            if (objFireAppDetails.EmergencyContact == null || objFireAppDetails.EmergencyContact == "")
+            //Division Number 
+            if (objBlockingOut.DivisionNo == null || objBlockingOut.DivisionNo == "")
             {
                 returnMsg.ReturnValue = "Error";
-                returnMsg.ReturnMessage = "Invalid Emergency Contact person.";
+                returnMsg.ReturnMessage = "Invalid Division Number.";
                 IsSuccess = false;
             }
 
-            // Buildning Address
-            if (objFireAppDetails.BAddress == null || objFireAppDetails.BAddress == "")
+            //Street 
+            if (objBlockingOut.Street == null || objBlockingOut.Street == "")
             {
                 returnMsg.ReturnValue = "Error";
-                returnMsg.ReturnMessage = "Invalid telephone number.";
+                returnMsg.ReturnMessage = "Invalid Street.";
                 IsSuccess = false;
             }
 
-            // Building Telephone
-            if (objFireAppDetails.BTelephone == null || objFireAppDetails.BTelephone == "")
+            //Land Plan 
+            if (objBlockingOut.LandPlan == null || objBlockingOut.LandPlan == "")
             {
                 returnMsg.ReturnValue = "Error";
-                returnMsg.ReturnMessage = "Invalid telephone number.";
-                IsSuccess = false;
-            }
-            else
-            {
-                if (objFireAppDetails.BTelephone.ToString().Trim().Length != 10)
-                {
-                    returnMsg.ReturnValue = "Error";
-                    returnMsg.ReturnMessage = "Applicant's Telephoone Number length should be 10.";
-                    IsSuccess = false;
-                }
-                else if (objFireAppDetails.BTelephone.ToString().Trim().StartsWith("0") == false)
-                {
-                    returnMsg.ReturnValue = "Error";
-                    returnMsg.ReturnMessage = "Invalid format in Applicant's Telephone Number. (0XXXXXXXXX)";
-                    IsSuccess = false;
-                }
-                else if (objCmnFunctions.ValidatePhoneNoDigits(objFireAppDetails.BTelephone.ToString().Trim()) == false)
-                {
-                    returnMsg.ReturnValue = "Error";
-                    returnMsg.ReturnMessage = "Applicant's Telephone Number should contain only digits.";
-                    IsSuccess = false;
-                }
-            }
-
-            // Mobile
-            if (objFireAppDetails.Mobile == null || objFireAppDetails.Mobile == "")
-            {
-                returnMsg.ReturnValue = "Error";
-                returnMsg.ReturnMessage = "Invalid mobile number.";
-                IsSuccess = false;
-            }
-            else
-            {
-                if (objFireAppDetails.Mobile.ToString().Trim().Length != 10)
-                {
-                    returnMsg.ReturnValue = "Error";
-                    returnMsg.ReturnMessage = "Applicant's Mobile Number length should be 10.";
-                    IsSuccess = false;
-                }
-                else if (objFireAppDetails.Mobile.ToString().Trim().StartsWith("0") == false)
-                {
-                    returnMsg.ReturnValue = "Error";
-                    returnMsg.ReturnMessage = "Invalid format in Applicant's Mobile Number. (0XXXXXXXXX)";
-                    IsSuccess = false;
-                }
-                else if (objCmnFunctions.ValidatePhoneNoDigits(objFireAppDetails.Mobile.ToString().Trim()) == false)
-                {
-                    returnMsg.ReturnValue = "Error";
-                    returnMsg.ReturnMessage = "Applicant's Mobile Number should contain only digits.";
-                    IsSuccess = false;
-                }
-            }
-
-            // Land Area number 
-            if (Decimal.Parse(objFireAppDetails.LandArea) <= 0)
-            {
-                returnMsg.ReturnValue = "Error";
-                returnMsg.ReturnMessage = "Invalid Land Area.";
+                returnMsg.ReturnMessage = "Invalid Land Plan.";
                 IsSuccess = false;
             }
 
-            // Capacity Number
-            if (Decimal.Parse(objFireAppDetails.Capacity) <= 0)
+            //Size Of Land 
+            if (objBlockingOut.SizeOfLand == null || objBlockingOut.SizeOfLand == "")
             {
                 returnMsg.ReturnValue = "Error";
-                returnMsg.ReturnMessage = "Invalid Capacity.";
+                returnMsg.ReturnMessage = "Invalid Land Size.";
                 IsSuccess = false;
             }
 
-            // Stories Number
-            if (objFireAppDetails.Stories < 1)
+            //Entrance 
+            if (objBlockingOut.Entrance == null || objBlockingOut.Entrance == "")
             {
                 returnMsg.ReturnValue = "Error";
-                returnMsg.ReturnMessage = "Invalid Number of stories.";
+                returnMsg.ReturnMessage = "Invalid Entrance info.";
                 IsSuccess = false;
             }
 
-            // Plan Availability text
-            //if (objFireAppDetails.PlanAvailability == null || objFireAppDetails.PlanAvailability == "")
-            //{
-            //    returnMsg.ReturnValue = "Error";
-            //    returnMsg.ReturnMessage = "Invalid Plan information.";
-            //    IsSuccess = false;
-            //}
-
-            // Exitways text
-            if (objFireAppDetails.Exitways == null || objFireAppDetails.Exitways == "")
+            //Location 
+            if (objBlockingOut.DatesofDev == null || objBlockingOut.DatesofDev == "")
             {
                 returnMsg.ReturnValue = "Error";
-                returnMsg.ReturnMessage = "Invalid Exitway information.";
-                IsSuccess = false;
-            }
-
-            // Emergency Exits in text
-            if (objFireAppDetails.EmergencyExits == null || objFireAppDetails.EmergencyExits == "")
-            {
-                returnMsg.ReturnValue = "Error";
-                returnMsg.ReturnMessage = "Invalid Emergency Exit Information.";
-                IsSuccess = false;
-            }
-
-            // Day Manpower number
-            if (objFireAppDetails.DayManpower < 0)
-            {
-                returnMsg.ReturnValue = "Error";
-                returnMsg.ReturnMessage = "Invalid Capacity.";
-                IsSuccess = false;
-            }
-
-            // Night manpower number
-            if (objFireAppDetails.NightManpower < 0)
-            {
-                returnMsg.ReturnValue = "Error";
-                returnMsg.ReturnMessage = "Invalid Capacity.";
-                IsSuccess = false;
-            }
-
-            // Tank Capacity number
-            if (Decimal.Parse(objFireAppDetails.TankCapacity) <= 0)
-            {
-                returnMsg.ReturnValue = "Error";
-                returnMsg.ReturnMessage = "Invalid Capacity.";
-                IsSuccess = false;
-            }
-
-            // Fire hose location in text
-            if (objFireAppDetails.FirehoseLocation == null || objFireAppDetails.FirehoseLocation == "")
-            {
-                returnMsg.ReturnValue = "Error";
-                returnMsg.ReturnMessage = "Invalid Fire hose location Information.";
-                IsSuccess = false;
-            }
-
-            // Electricity phase (three or one)
-            if (objFireAppDetails.ElecPhase == null || objFireAppDetails.ElecPhase == "")
-            {
-                returnMsg.ReturnValue = "Error";
-                returnMsg.ReturnMessage = "Invalid Electricity phase Information.";
+                returnMsg.ReturnMessage = "Invalid Dates of Development.";
                 IsSuccess = false;
             }
 
             return IsSuccess;
         }
 
-        // Submit Municipal Council Application
-        public bool SaveApplication(FireCertificateApplication objFireAppDetails, ref ReturnMsgInfo returnMsg)
+        // Save Blocking out application
+        public bool SaveApplication(BlockingOutApp objBlockingOut, ref ReturnMsgInfo returnMsg)
         {
             bool isSaved = false;
             Index objIndex = new Index();
             this.objConMain = new Connection_Main();
 
-            objIndex = GetIndexes(objFireAppDetails, ref returnMsg);
+            objIndex = GetIndexes(objBlockingOut, ref returnMsg);
             var certId = objIndex.Code.ToString().Trim() + objIndex.NextId.ToString().Trim();
-            objFireAppDetails.CertificateId = certId;
+            objBlockingOut.AppID = certId;
 
             try
             {
-                string conString = this.objConMain.Get_Main_Connection(objFireAppDetails.ClientID);
+                string conString = this.objConMain.Get_Main_Connection(objBlockingOut.ClientID);
                 if (conString == null || conString == "")
                 {
                     returnMsg.ReturnValue = "Error";
@@ -365,30 +200,28 @@ namespace api_rate.Helpers
 
                     if (this.mySqlCon != null)
                     {
-                        strSql = "INSERT INTO tbl_firecertificate_application(CertificateId, CompanyName, Address, Telephone, DistanceFromCouncil, NatureOfBusiness, BuildingDescription ,BuildingPlan, TotalLand, RoadFromCouncil, OwnerName, CurrentFirePlan, Status, Email, Supervisor, DateApplied, DateReviewed, user, DateIssued, DateAppRej, superVisit, DateActReview) VALUES (@CertificateId, @CompanyName, @Address, @Telephone, @DistanceFromCouncil, @NatureOfBusiness, @BuildingDescription,@BuildingPlan, @TotalLand, @RoadFromCouncil, @OwnerName, @CurrentFirePlan, @Status, @Email, @Supervisor, @DateApplied, @DateReviewed, @user, @DateIssued, @DateAppRej, @superVisit, @DateActReview); UPDATE tbl_firecertificate_index SET NextApplicationId=(NextApplicationId + 1);";
+                        strSql = "INSERT INTO tbl_blockingout_applications( AppId ,UserId ,Applicant ,Address ,Email ,Telephone ,RateNo ,Location ,DivisionNo ,Street ,LandPlan ,SizeOfLand ,ElecBoardApp ,WaterBoardApp ,Entrance ,IfBuilDiv ,DatesofDev ,AppliedDate ,AppRejDate ,ExpDate)VALUES('@AppId' ,'@UserId'  ,'@Applicant'  ,'@Address' ,'@Email'  ,'@Telephone'  ,'@RateNo'  ,'@Location'  ,'@DivisionNo' ,'@Street'  ,'@LandPlan'  ,'@SizeOfLand'  ,'@ElecBoardApp'  ,'@WaterBoardApp'  ,'@Entrance'  ,'@IfBuilDiv'  ,'@DatesofDev' ,'@AppliedDate'  ,'@AppRejDate'  ,'@ExpDate' );";
                         cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
-                        cmd.Parameters.AddWithValue("@CertificateId", objFireAppDetails.CertificateId.ToString().Trim());
-                        cmd.Parameters.AddWithValue("@CompanyName", objFireAppDetails.CompanyName);
-                        cmd.Parameters.AddWithValue("@Address", objFireAppDetails.Address);
-                        cmd.Parameters.AddWithValue("@Telephone", objFireAppDetails.Telephone);
-                        cmd.Parameters.AddWithValue("@DistanceFromCouncil", objFireAppDetails.DistanceFromCouncil);
-                        cmd.Parameters.AddWithValue("@NatureOfBusiness", objFireAppDetails.NatureOfBusiness);
-                        cmd.Parameters.AddWithValue("@BuildingDescription", objFireAppDetails.BuildingDescription);
-                        cmd.Parameters.AddWithValue("@BuildingPlan", objFireAppDetails.BuildingPlan);
-                        cmd.Parameters.AddWithValue("@TotalLand", objFireAppDetails.TotalLand);
-                        cmd.Parameters.AddWithValue("@RoadFromCouncil", objFireAppDetails.RoadFromCouncil);
-                        cmd.Parameters.AddWithValue("@OwnerName", objFireAppDetails.OwnerName);
-                        cmd.Parameters.AddWithValue("@CurrentFirePlan", objFireAppDetails.CurrentFirePlan);
-                        cmd.Parameters.AddWithValue("@Status", Globals.PENDING.ToString().Trim());
-                        cmd.Parameters.AddWithValue("@Email", objFireAppDetails.Email);
-                        cmd.Parameters.AddWithValue("@Supervisor", "");
-                        cmd.Parameters.AddWithValue("@DateApplied", objFireAppDetails.DateApplied);
-                        cmd.Parameters.AddWithValue("@DateReviewed", "");
-                        cmd.Parameters.AddWithValue("@DateIssued", "");
-                        cmd.Parameters.AddWithValue("@DateAppRej", "");
-                        cmd.Parameters.AddWithValue("@user", objFireAppDetails.user);
-                        cmd.Parameters.AddWithValue("@superVisit", "0");
-                        cmd.Parameters.AddWithValue("@DateActReview", "");
+                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.AppID.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.UserID.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.Applicant.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.Address.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.Email.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.Telephone.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.RateNo.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.Location.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.DivisionNo.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.Street.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.LandPlan.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.SizeOfLand.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.ElecBoardApp.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.WaterBoardApp.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.Entrance.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.IfBuilDiv.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.DatesofDev.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@CertificateId", objBlockingOut.AppliedDate.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@CertificateId", "");
+                        cmd.Parameters.AddWithValue("@CertificateId", "");                        
                         cmd.ExecuteNonQuery();
                         isSaved = true;
 
@@ -415,6 +248,77 @@ namespace api_rate.Helpers
             return isSaved;
         }
 
-        // Validate Fire Department Application
+        // Get Indexes
+        public Index GetIndexes(BlockingOutApp objBlockingOut, ref ReturnMsgInfo objReturnMsg)
+        {
+            Index objIndexes = new Index();
+            this.objConMain = new Connection_Main();
+
+            string conString = this.objConMain.Get_Main_Connection(objBlockingOut.ClientID);
+            if (conString == null || conString == "")
+            {
+                objReturnMsg.ReturnValue = "Error";
+                objReturnMsg.ReturnMessage = "Connection not found.";
+            }
+            else
+            {
+                try
+                {
+                    this.mySqlCon = new MySqlConnection(conString);
+                    if (this.mySqlCon.State.ToString() != "Open")
+                    {
+                        this.mySqlCon.Open();
+                    }
+                    else
+                    {
+                        objReturnMsg.ReturnValue = "Error";
+                        objReturnMsg.ReturnMessage = "Connection was already opened.";
+                    }
+                    if (this.mySqlCon != null)
+                    {
+                        strSql = "SELECT * FROM tbl_firecertificate_index;";
+                        da = new MySqlDataAdapter(strSql, this.mySqlCon);
+                        ds = new DataSet();
+                        da.Fill(ds, "Application");
+                        dt = ds.Tables["Application"];
+                        if (dt.Rows.Count > 0)
+                        {
+                            foreach (DataRow dtRow in dt.Rows)
+                            {
+                                Index objIndex = new Index();
+                                objIndex.Code = dtRow["Code"].ToString().Trim();
+                                objIndex.NextId = (int)dtRow["NextApplicationId"];
+                                objIndex.NextPayment = (int)dtRow["NextPaymentId"];
+
+                                objIndexes = objIndex;
+                            }
+                            objReturnMsg.ReturnValue = "OK";
+                            objReturnMsg.ReturnMessage = "Data found";
+                        }
+                        else
+                        {
+                            objReturnMsg.ReturnValue = "Error";
+                            objReturnMsg.ReturnMessage = "No data found";
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    objReturnMsg.ReturnValue = "Error";
+                    objReturnMsg.ReturnMessage = ex.Message;
+                }
+                finally
+                {
+                    if (this.mySqlCon != null)
+                    {
+                        this.mySqlCon.Close();
+                    }
+                }
+            }
+
+
+            return objIndexes;
+        }
+
     }
 }

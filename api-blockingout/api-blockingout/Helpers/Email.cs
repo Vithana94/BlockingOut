@@ -74,7 +74,7 @@ namespace api_rate.Helpers
         
 
         //Get Email body
-        public string GetEmailMsgBody(string strStatus, FireCertificateApplication objApp = null)
+        public string GetEmailMsgBody(string strStatus, BlockingOutApp objApp = null)
         {
             string strMsgBody = string.Empty;
             string strCouncil = ConnectionInfo.DBInfo.CouncilName;
@@ -163,7 +163,7 @@ namespace api_rate.Helpers
 
                               "We are sorry to inform that your fire certificate application is rejected. Please contact the Administrator for more details. <br/>" +
                               "<br />"+
-                              "Reason for rejection: "+ objApp.RejectReason +
+                              "Reason for rejection: " +
 
                               "Thank You. <br/>" +
                               "" + strCouncil + "" +

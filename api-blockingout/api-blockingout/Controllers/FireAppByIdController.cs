@@ -22,93 +22,93 @@ namespace api_rate.Controllers
         }
 
         // POST /api/FireAppById
-        public FireAppByIdOutput Post([FromBody]FireCertificateApplication objFireApplication)
-        {
-            FireAppByIdOutput objFireAppByIdOutput = new FireAppByIdOutput();
-            FireSupervisorApplication objSuperApp = new FireSupervisorApplication();
-            ReturnMsgInfo objReturnMsg = new ReturnMsgInfo();
-            ReturnMsgInfo objPayReturnMsg = new ReturnMsgInfo();
-            PaymentDetails objPayment = new PaymentDetails();
-            FireCertificateApplication objFireApp = new FireCertificateApplication();
+        //public FireAppByIdOutput Post([FromBody]FireCertificateApplication objFireApplication)
+        //{
+        //    FireAppByIdOutput objFireAppByIdOutput = new FireAppByIdOutput();
+        //    FireSupervisorApplication objSuperApp = new FireSupervisorApplication();
+        //    ReturnMsgInfo objReturnMsg = new ReturnMsgInfo();
+        //    ReturnMsgInfo objPayReturnMsg = new ReturnMsgInfo();
+        //    PaymentDetails objPayment = new PaymentDetails();
+        //    FireCertificateApplication objFireApp = new FireCertificateApplication();
 
-            try
-            {
-                if (objFireApplication.ClientID == null || objFireApplication.ClientID == "")
-                {
-                    throw new Exception("Invalid Client ID.");
-                }
-                else if (objFireApplication.Id == null || objFireApplication.Id == 0)
-                {
-                    throw new Exception("Application id is required");
-                }
-                else
-                {
-                    // get fire certificate application
-                    objFireApp = _getData.GetApplicationById(objFireApplication, ref objReturnMsg);
+        //    try
+        //    {
+        //        if (objFireApplication.ClientID == null || objFireApplication.ClientID == "")
+        //        {
+        //            throw new Exception("Invalid Client ID.");
+        //        }
+        //        else if (objFireApplication.Id == null || objFireApplication.Id == 0)
+        //        {
+        //            throw new Exception("Application id is required");
+        //        }
+        //        else
+        //        {
+        //            // get fire certificate application
+        //            objFireApp = _getData.GetApplicationById(objFireApplication, ref objReturnMsg);
 
-                    // assign certId for payment
-                    objFireApplication.CertificateId = objFireApp.CertificateId;
+        //            // assign certId for payment
+        //            objFireApplication.CertificateId = objFireApp.CertificateId;
 
-                    // get payment details
-                    objPayment = _getData.GetPaymentDetails(objFireApplication, ref objPayReturnMsg);
+        //            // get payment details
+        //            objPayment = _getData.GetPaymentDetails(objFireApplication, ref objPayReturnMsg);
 
-                    // assign cert Id for second application
-                    objSuperApp.CertificateId = objFireApplication.CertificateId;
+        //            // assign cert Id for second application
+        //            objSuperApp.CertificateId = objFireApplication.CertificateId;
 
-                    // assign client id for second application 
-                    objSuperApp.ClientID = objFireApplication.ClientID;
+        //            // assign client id for second application 
+        //            objSuperApp.ClientID = objFireApplication.ClientID;
 
-                    // get Supervisor application
-                    objSuperApp = _getData.GetSupervisorApplicationByFireAppID(objSuperApp, ref objReturnMsg);
+        //            // get Supervisor application
+        //            objSuperApp = _getData.GetSupervisorApplicationByFireAppID(objSuperApp, ref objReturnMsg);
 
-                    // assign attributes to fire application object
-                    objFireApp.ClientID = objSuperApp.ClientID;
-                    objFireApp.CertificateId = objSuperApp.CertificateId;
-                    objFireApp.ApplicantName = objSuperApp.ApplicantName;
-                    objFireApp.BOwnerName = objSuperApp.BOwnerName;
-                    objFireApp.LesseeName = objSuperApp.LesseeName;
-                    objFireApp.EmergencyContact = objSuperApp.EmergencyContact;
-                    objFireApp.BAddress = objSuperApp.BAddress;
-                    objFireApp.OtherAddresses = objSuperApp.OtherAddresses;
-                    objFireApp.DistRoadSigns = objSuperApp.DistRoadSigns;
-                    objFireApp.ShortestRoad = objSuperApp.ShortestRoad;
-                    objFireApp.BTelephone = objSuperApp.BTelephone;
-                    objFireApp.Mobile = objSuperApp.Mobile;
-                    objFireApp.LandArea = objSuperApp.LandArea;
-                    objFireApp.Capacity = objSuperApp.Capacity;
-                    objFireApp.Stories = objSuperApp.Stories;
-                    objFireApp.Construction = objSuperApp.Construction;
-                    objFireApp.BuildType = objSuperApp.BuildType;
-                    objFireApp.UnapprovedBuildings = objSuperApp.UnapprovedBuildings;
-                    objFireApp.PlanAvailability = objSuperApp.PlanAvailability;
-                    objFireApp.Exitways = objSuperApp.Exitways;
-                    objFireApp.EmergencyExits = objSuperApp.EmergencyExits;
-                    objFireApp.DayManpower = objSuperApp.DayManpower;
-                    objFireApp.NightManpower = objSuperApp.NightManpower;
-                    objFireApp.TankCapacity = objSuperApp.TankCapacity;
-                    objFireApp.CommonTank = objSuperApp.CommonTank;
-                    objFireApp.FirehoseLocation = objSuperApp.FirehoseLocation;
-                    objFireApp.ElecPhase = objSuperApp.ElecPhase;
-                    objFireApp.Generator = objSuperApp.Generator;
-                    objFireApp.CurrentCircuit = objSuperApp.CurrentCircuit;
+        //            // assign attributes to fire application object
+        //            objFireApp.ClientID = objSuperApp.ClientID;
+        //            objFireApp.CertificateId = objSuperApp.CertificateId;
+        //            objFireApp.ApplicantName = objSuperApp.ApplicantName;
+        //            objFireApp.BOwnerName = objSuperApp.BOwnerName;
+        //            objFireApp.LesseeName = objSuperApp.LesseeName;
+        //            objFireApp.EmergencyContact = objSuperApp.EmergencyContact;
+        //            objFireApp.BAddress = objSuperApp.BAddress;
+        //            objFireApp.OtherAddresses = objSuperApp.OtherAddresses;
+        //            objFireApp.DistRoadSigns = objSuperApp.DistRoadSigns;
+        //            objFireApp.ShortestRoad = objSuperApp.ShortestRoad;
+        //            objFireApp.BTelephone = objSuperApp.BTelephone;
+        //            objFireApp.Mobile = objSuperApp.Mobile;
+        //            objFireApp.LandArea = objSuperApp.LandArea;
+        //            objFireApp.Capacity = objSuperApp.Capacity;
+        //            objFireApp.Stories = objSuperApp.Stories;
+        //            objFireApp.Construction = objSuperApp.Construction;
+        //            objFireApp.BuildType = objSuperApp.BuildType;
+        //            objFireApp.UnapprovedBuildings = objSuperApp.UnapprovedBuildings;
+        //            objFireApp.PlanAvailability = objSuperApp.PlanAvailability;
+        //            objFireApp.Exitways = objSuperApp.Exitways;
+        //            objFireApp.EmergencyExits = objSuperApp.EmergencyExits;
+        //            objFireApp.DayManpower = objSuperApp.DayManpower;
+        //            objFireApp.NightManpower = objSuperApp.NightManpower;
+        //            objFireApp.TankCapacity = objSuperApp.TankCapacity;
+        //            objFireApp.CommonTank = objSuperApp.CommonTank;
+        //            objFireApp.FirehoseLocation = objSuperApp.FirehoseLocation;
+        //            objFireApp.ElecPhase = objSuperApp.ElecPhase;
+        //            objFireApp.Generator = objSuperApp.Generator;
+        //            objFireApp.CurrentCircuit = objSuperApp.CurrentCircuit;
 
-                    if (objReturnMsg.ReturnValue != "OK")
-                    {
-                        throw new Exception("Error occurred when retrieve application details. " + objReturnMsg.ReturnMessage.ToString().Trim());
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                objReturnMsg.ReturnValue = "Error";
-                objReturnMsg.ReturnMessage = ex.Message.ToString().Trim();
-            }
+        //            if (objReturnMsg.ReturnValue != "OK")
+        //            {
+        //                throw new Exception("Error occurred when retrieve application details. " + objReturnMsg.ReturnMessage.ToString().Trim());
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        objReturnMsg.ReturnValue = "Error";
+        //        objReturnMsg.ReturnMessage = ex.Message.ToString().Trim();
+        //    }
 
-            objFireAppByIdOutput.FireApplication = objFireApp;
-            objFireAppByIdOutput.PaymentDetails = objPayment;
-            objFireAppByIdOutput.ReturnMessageInfo = objReturnMsg;
+        //    objFireAppByIdOutput.FireApplication = objFireApp;
+        //    objFireAppByIdOutput.PaymentDetails = objPayment;
+        //    objFireAppByIdOutput.ReturnMessageInfo = objReturnMsg;
 
-            return objFireAppByIdOutput;
-        }
+        //    return objFireAppByIdOutput;
+        //}
     }
 }

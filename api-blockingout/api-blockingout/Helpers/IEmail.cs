@@ -12,7 +12,7 @@ namespace api_rate.Helpers
         // Send Email
         bool SendEmail(string strMsg, string strEmail, ref string strErMsg);
         // Get Email Message Body according to status
-        string GetEmailMsgBody(string strStatus, FireCertificateApplication objApp = null);
+        string GetEmailMsgBody(string strStatus, BlockingOutApp objApp = null);
 
     }
 }
