@@ -12,16 +12,16 @@ using System.Net.Http;
 namespace api_rate.Controllers
 {
     [JwtCustomAuth]
-    public class BlockingOutByIdController : ApiController
+    public class BlockingOutByUserIdAndIdController : ApiController
     {
         private IGetData _getData = null;
 
-        public BlockingOutByIdController(IGetData IGetData)
+        public BlockingOutByUserIdAndIdController(IGetData IGetData)
         {
             _getData = IGetData;
         }
 
-        // POST /api/BlockingOutById
+        // POST /api/BlockingOutByUserIdAndId
         public BlockingOutput Post([FromBody]BlockingOutApp objBlockingOut)
         {
             BlockingOutput objBlockingOutput = new BlockingOutput();
@@ -38,10 +38,14 @@ namespace api_rate.Controllers
                 {
                     throw new Exception("Id is required");
                 }
+                else if(objBlockingOut.UserID == null || objBlockingOut.UserID == "")
+                {
+                    throw new Exception("User id is required");
+                }
                 else
                 {
                     // get Blocking out application
-                    objBlockingOutReturn = _getData.GetApplicationById(objBlockingOut, ref objReturnMsg);
+                    objBlockingOutReturn = _getData.GetApplicationByUserIdAndId(objBlockingOut, ref objReturnMsg);
 
                     if (objReturnMsg.ReturnValue != "OK")
                     {

@@ -51,6 +51,7 @@ namespace api_rate.Models
         public string ElecBoardApp { get; set; }
         public string WaterBoardApp { get; set; }
         public string Entrance { get; set; }
+        public string Status { get; set; }
         public string AppliedDate { get; set; }
         public string AppRejDate { get; set; }
         public string ExpDate { get; set; } 
