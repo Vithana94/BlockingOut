@@ -52,6 +52,8 @@ namespace api_rate.Models
         public string Entrance { get; set; }
         public string Status { get; set; }
         public string AppliedDate { get; set; }
+        public string SurvayDate { get; set; }
+        public string ActualSurvDate { get; set; }
         public string AppRejDate { get; set; }
         public string ExpDate { get; set; }
 

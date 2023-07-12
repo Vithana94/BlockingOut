@@ -109,6 +109,26 @@ namespace api_rate.Helpers
                                 var appDate = (DateTime)dtRow["AppliedDate"];
                                 objBlockingOutDetails.AppliedDate = appDate.ToString("yyyy/MM/dd HH:mm").Trim();
 
+                                var survayDate = (DateTime)dtRow["SurvayDate"];
+                                if (survayDate == DateTime.MinValue)
+                                {
+                                    objBlockingOutDetails.SurvayDate = "";
+                                }
+                                else
+                                {
+                                    objBlockingOutDetails.SurvayDate = survayDate.ToString("yyyy/MM/dd HH:mm");
+                                }
+
+                                var actualSurvDate = (DateTime)dtRow["ActualSurvDate"];
+                                if (actualSurvDate == DateTime.MinValue)
+                                {
+                                    objBlockingOutDetails.ActualSurvDate = "";
+                                }
+                                else
+                                {
+                                    objBlockingOutDetails.ActualSurvDate = actualSurvDate.ToString("yyyy/MM/dd HH:mm");
+                                }
+
                                 var appRejDate = (DateTime)dtRow["AppRejDate"];
                                 if (appRejDate == DateTime.MinValue)
                                 {
@@ -241,6 +261,26 @@ namespace api_rate.Helpers
 
                                 var appDate = (DateTime)dtRow["AppliedDate"];
                                 objBlockingOutDetails.AppliedDate = appDate.ToString("yyyy/MM/dd HH:mm").Trim();
+
+                                var survayDate = (DateTime)dtRow["SurvayDate"];
+                                if (survayDate == DateTime.MinValue)
+                                {
+                                    objBlockingOutDetails.SurvayDate = "";
+                                }
+                                else
+                                {
+                                    objBlockingOutDetails.SurvayDate = survayDate.ToString("yyyy/MM/dd HH:mm");
+                                }
+
+                                var actualSurvDate = (DateTime)dtRow["ActualSurvDate"];
+                                if (actualSurvDate == DateTime.MinValue)
+                                {
+                                    objBlockingOutDetails.ActualSurvDate = "";
+                                }
+                                else
+                                {
+                                    objBlockingOutDetails.ActualSurvDate = actualSurvDate.ToString("yyyy/MM/dd HH:mm");
+                                }
 
                                 var appRejDate = (DateTime)dtRow["AppRejDate"];
                                 if (appRejDate == DateTime.MinValue)
@@ -375,6 +415,26 @@ namespace api_rate.Helpers
                                 var appDate = (DateTime)dtRow["AppliedDate"];
                                 objBlockingOutDetails.AppliedDate = appDate.ToString("yyyy/MM/dd HH:mm").Trim();
 
+                                var survayDate = (DateTime)dtRow["SurvayDate"];
+                                if (survayDate == DateTime.MinValue)
+                                {
+                                    objBlockingOutDetails.SurvayDate = "";
+                                }
+                                else
+                                {
+                                    objBlockingOutDetails.SurvayDate = survayDate.ToString("yyyy/MM/dd HH:mm");
+                                }
+
+                                var actualSurvDate = (DateTime)dtRow["ActualSurvDate"];
+                                if (actualSurvDate == DateTime.MinValue)
+                                {
+                                    objBlockingOutDetails.ActualSurvDate = "";
+                                }
+                                else
+                                {
+                                    objBlockingOutDetails.ActualSurvDate = actualSurvDate.ToString("yyyy/MM/dd HH:mm");
+                                }
+
                                 var appRejDate = (DateTime)dtRow["AppRejDate"];
                                 if (appRejDate == DateTime.MinValue)
                                 {
@@ -507,6 +567,26 @@ namespace api_rate.Helpers
 
                                 var appDate = (DateTime)dtRow["AppliedDate"];
                                 objBlockingOutDetails.AppliedDate = appDate.ToString("yyyy/MM/dd HH:mm").Trim();
+
+                                var survayDate = (DateTime)dtRow["SurvayDate"];
+                                if (survayDate == DateTime.MinValue)
+                                {
+                                    objBlockingOutDetails.SurvayDate = "";
+                                }
+                                else
+                                {
+                                    objBlockingOutDetails.SurvayDate = survayDate.ToString("yyyy/MM/dd HH:mm");
+                                }
+
+                                var actualSurvDate = (DateTime)dtRow["ActualSurvDate"];
+                                if (actualSurvDate == DateTime.MinValue)
+                                {
+                                    objBlockingOutDetails.ActualSurvDate = "";
+                                }
+                                else
+                                {
+                                    objBlockingOutDetails.ActualSurvDate = actualSurvDate.ToString("yyyy/MM/dd HH:mm");
+                                }
 
                                 var appRejDate = (DateTime)dtRow["AppRejDate"];
                                 if (appRejDate == DateTime.MinValue)
@@ -641,6 +721,26 @@ namespace api_rate.Helpers
                                 var appDate = (DateTime)dtRow["AppliedDate"];
                                 objBlockingOutDetails.AppliedDate = appDate.ToString("yyyy/MM/dd HH:mm").Trim();
 
+                                var survayDate = (DateTime)dtRow["SurvayDate"];
+                                if (survayDate == DateTime.MinValue)
+                                {
+                                    objBlockingOutDetails.SurvayDate = "";
+                                }
+                                else
+                                {
+                                    objBlockingOutDetails.SurvayDate = survayDate.ToString("yyyy/MM/dd HH:mm");
+                                }
+
+                                var actualSurvDate = (DateTime)dtRow["ActualSurvDate"];
+                                if (actualSurvDate == DateTime.MinValue)
+                                {
+                                    objBlockingOutDetails.ActualSurvDate = "";
+                                }
+                                else
+                                {
+                                    objBlockingOutDetails.ActualSurvDate = actualSurvDate.ToString("yyyy/MM/dd HH:mm");
+                                }
+
                                 var appRejDate = (DateTime)dtRow["AppRejDate"];
                                 if (appRejDate == DateTime.MinValue)
                                 {
@@ -774,6 +874,26 @@ namespace api_rate.Helpers
                                 var appDate = (DateTime)dtRow["AppliedDate"];
                                 objBlockingOutDetails.AppliedDate = appDate.ToString("yyyy/MM/dd HH:mm").Trim();
 
+                                var survayDate = (DateTime)dtRow["SurvayDate"];
+                                if (survayDate == DateTime.MinValue)
+                                {
+                                    objBlockingOutDetails.SurvayDate = "";
+                                }
+                                else
+                                {
+                                    objBlockingOutDetails.SurvayDate = survayDate.ToString("yyyy/MM/dd HH:mm");
+                                }
+
+                                var actualSurvDate = (DateTime)dtRow["ActualSurvDate"];
+                                if (actualSurvDate == DateTime.MinValue)
+                                {
+                                    objBlockingOutDetails.ActualSurvDate = "";
+                                }
+                                else
+                                {
+                                    objBlockingOutDetails.ActualSurvDate = actualSurvDate.ToString("yyyy/MM/dd HH:mm");
+                                }
+
                                 var appRejDate = (DateTime)dtRow["AppRejDate"];
                                 if (appRejDate == DateTime.MinValue)
                                 {
@@ -819,5 +939,6 @@ namespace api_rate.Helpers
 
             return lstRetBlockingOut;
         }
+    
     }
 }

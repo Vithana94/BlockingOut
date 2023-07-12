@@ -19,5 +19,8 @@ namespace api_rate.Helpers
 
         // Get Application by UserId and Id
         BlockingOutApp GetApplicationByUserIdAndId(BlockingOutApp objApplication, ref ReturnMsgInfo returnMsg);
+
+        // Get List of pending Blocking Out applications within two dates
+        List<BlockingOutApp> GetApplicationsStatusforDate(BlockingOutApp objApplication, ref ReturnMsgInfo returnMsg);
     }
 }

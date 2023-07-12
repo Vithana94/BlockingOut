@@ -46,7 +46,7 @@
                 <br />
                 <div><a href="#apiAppApprove" style="color:red!important; font-size:small" >07. Approve Application</a></div>
                 <div><a href="#apiAppReject" style="color:red!important; font-size:small" >08. Reject Application</a></div>
-                <div><a href="#apiAssignSurvayor" style="color:red!important; font-size:small" >12. Assign Supervisor</a></div>
+                <div><a href="#apiAssignSurvayor" style="color:red!important; font-size:small" >12. Assign Surveyor</a></div>
                 <br />
                 <div><a href="#apiChargebyId" style=" font-size:small">14. Charges</a></div>
                 <div><a href="#apiPaymentSubmit" style=" font-size:small">15. Submit Payment</a></div>
@@ -76,7 +76,7 @@
                             <div>Base URL</div>
                         </div>
                         <div class="pre row">
-                            <div class="col-sm-12 ">https://blockingout-api.nekfa.com/api/BlockingOutListByUserId</div>
+                            <div class="col-sm-12 ">https://blocking-api.nekfa.com/api/BlockingOutListByUserId</div>
                         </div>
                     </div>
                     <div>
@@ -341,7 +341,7 @@
                             <div>Base URL</div>
                         </div>
                         <div class="pre row">
-                            <div class="col-sm-12 ">https://blockingout-api.nekfa.com/api/BlockingOutById</div>
+                            <div class="col-sm-12 ">https://blocking-api.nekfa.com/api/BlockingOutById</div>
                         </div>
                     </div>
                     <div>
@@ -604,7 +604,7 @@
                             <div>Base URL</div>
                         </div>
                         <div class="pre row">
-                            <div class="col-sm-12 ">https://blockingout-api.nekfa.com/api/BlockingOutByUserIdAndId</div>
+                            <div class="col-sm-12 ">https://blocking-api.nekfa.com/api/BlockingOutByUserIdAndId</div>
                         </div>
                     </div>
                     <div>
@@ -895,7 +895,7 @@
                             <div>Base URL</div>
                         </div>
                         <div class="pre row">
-                            <div class="col-sm-12 ">https://https://blockingout-api.nekfa.com/api/AppSubmit</div>
+                            <div class="col-sm-12 ">https://blocking-api.nekfa.com/api/AppSubmit</div>
                         </div>
                     </div>
                     <div>
@@ -2133,13 +2133,13 @@
                 </div>
                 <%--=================================== 07. Approve Application =================================================================--%>
                 <div id="apiAppApprove">
-                    <h3 class="heading">Approve Municipal Application</h3>
+                    <h3 class="heading">Approve Application</h3>
                     <div>
                         <div>
                             <div>Introduction</div>
                         </div>
                         <div class="pre row">
-                            <div class="col-sm-12 ">This API helps to approve a municipal application</div>
+                            <div class="col-sm-12 ">This API helps to approve an application</div>
                         </div>
                     </div>
                     <div>
@@ -2147,7 +2147,7 @@
                             <div>Base URL</div>
                         </div>
                         <div class="pre row">
-                            <div class="col-sm-12 ">https://firecertificate-api.nekfa.com/api/FireAppApprove</div>
+                            <div class="col-sm-12 ">https://blocking-api.nekfa.com/api/BlockingOutApprove</div>
                         </div>
                     </div>
                     <div>
@@ -2172,7 +2172,7 @@
                         </div>
                         <div class="pre">
                             <div class="row">
-                                <div class="col-sm-2 ">Id</div>
+                                <div class="col-sm-2 ">ID</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
                                     Application id.
@@ -2193,7 +2193,7 @@
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "Id": 201
+                                      "ID": 201
                                     }
                                 </div>
 
@@ -2251,7 +2251,7 @@
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ReturnValue": "OK",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ReturnMessage": "Application Successfully approved.",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ReturnMessage": "Application Approved.",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AppId": 0
                                     <br />
@@ -2483,15 +2483,15 @@
                         </div>
                     </div>
                 </div>                
-                <%--=================================== 12. Assign Supervisor ===================================================================--%>
-                <div id="apiAssignSupervisor">
-                    <h3 class="heading">Assign Supervisor</h3>
+                <%--=================================== 12. Assign Surveyor =====================================================================--%>
+                <div id="apiAssignSurvayor">
+                    <h3 class="heading">Assign Surveyor</h3>
                     <div>
                         <div>
                             <div>Introduction</div>
                         </div>
                         <div class="pre row">
-                            <div class="col-sm-12 ">This API helps to assign a supervisor to an application </div>
+                            <div class="col-sm-12 ">This API helps to assign a Surveyor to an application </div>
                         </div>
                     </div>
                     <div>
@@ -2499,7 +2499,7 @@
                             <div>Base URL</div>
                         </div>
                         <div class="pre row">
-                            <div class="col-sm-12 ">https://firecertificate-api.nekfa.com/api/AssignSupervisor</div>
+                            <div class="col-sm-12 ">https://blocking-api.nekfa.com/api/BlockingOutAssignSurv</div>
                         </div>
                     </div>
                     <div>
@@ -2581,10 +2581,10 @@
                             <br />
 
                             <div class="row">
-                                <div class="col-sm-2 ">Supervisor</div>
+                                <div class="col-sm-2 ">Surveyor</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    Supervisor Name
+                                    Surveyor Name
                                 </div>
                             </div>
                             <div class="row">
@@ -2602,17 +2602,17 @@
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "Supervisor":"Supervisor 1"
+                                      "Surveyor":"Surveyor 1"
                                     }
                                 </div>
                             </div>
                             <br />
 
                              <div class="row">
-                                <div class="col-sm-2 ">DateReviewed</div>
+                                <div class="col-sm-2 ">SurvayDate</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    Date Reviewed
+                                    Survay Date
                                 </div>
                             </div>
                             <div class="row">
@@ -2630,7 +2630,7 @@
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "DateReviewed":"2023/06/12 13:00"
+                                      "SurvayDate":"2023/06/12 13:00"
                                     }
                                 </div>
                             </div>
@@ -2657,7 +2657,7 @@
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ReturnValue": "OK",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ReturnMessage": "Supervisor Successfully Assigned",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ReturnMessage": "Surveyor Assigned",
                                     <br />
                                     }
                                 </div>
@@ -2698,195 +2698,6 @@
                         </div>
                     </div>
                 </div>                
-                <%--=================================== 13. Supervisor Status Update ============================================================--%>
-                <div id="apiSupervisorVisited">
-                    <h3 class="heading">Supervisor Status Update</h3>
-                    <div>
-                        <div>
-                            <div>Introduction</div>
-                        </div>
-                        <div class="pre row">
-                            <div class="col-sm-12 ">This API helps to Set inspection status</div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>Base URL</div>
-                        </div>
-                        <div class="pre row">
-                            <div class="col-sm-12 ">https://firecertificate-api.nekfa.com/api/SupervisorVisited</div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>Request type</div>
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-3 ">Method</div>
-                                <div class="col-sm-9">POST</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 ">Content type</div>
-                                <div class="col-sm-9">application/json</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div>
-                            <div>List of parameters</div>
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-2 ">Id</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Application id.
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">Int</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "Id": 201
-                                    }
-                                </div>
-
-                            </div>
-
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-2 ">DateActReview</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Date Date Actually Reviewed
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">DateTime</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "DateActReview":"2023/06/12 13:00"
-                                    }
-                                </div>
-                            </div>
-                            <br /> 
-                                                       
-                            <div class="row">
-                                <div class="col-sm-2 ">ClientID</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    To identify user.
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "ClientID":"TestId"
-                                    }
-                                </div>
-                            </div>
-                            <br />
-
-
-                        </div>
-                    </div>
-                    <div style="overflow-y: hidden; overflow-x: hidden;">
-                        <div>
-                            <div>Response</div>
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-3 ">Response type</div>
-                                <div class="col-sm-9">JSON</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 ">Response Status</div>
-                                <div class="col-sm-9">200 - OK</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 ">Response values</div>
-                                <div class="col-sm-9">
-                                    { 
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ReturnValue": "OK",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ReturnMessage": "Status set to inspected.",
-                                    <br />
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>ReturnMessageInfo List</div>
-                            <br />
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-12 ">
-                                    "ReturnMessageInfo" is 2nd arry of the response and it has two objects "ReturnValue" and "ReturnMessage".
-                                </div>
-                            </div>
-                            <br />
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-5 ">Description</div>
-                                <div class="col-sm-2 ">ReturnValue</div>
-                                <div class="col-sm-5">ReturnMessage</div>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-5 ">If process successfully complete</div>
-                                <div class="col-sm-2 ">"OK"</div>
-                                <div class="col-sm-5">"Data found etc..."</div>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-5 ">If any error occured</div>
-                                <div class="col-sm-2 ">"Error"</div>
-                                <div class="col-sm-5">"Invalid Client ID, Connection not found etc..."</div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <%--=================================== 14. Charges =============================================================================--%>
                 <div id="apiChargebyId">
                     <h3 class="heading">Charges</h3>

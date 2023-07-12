@@ -14,5 +14,14 @@ namespace api_rate.Helpers
 
         // Save Blocking out application
         bool SaveApplication(BlockingOutApp objBlockingOut, ref ReturnMsgInfo returnMsg);
+
+        // Assign surveyor
+        bool AssignSurveyor(BlockingOutApp objApplication, ref ReturnMsgInfo returnMsg);
+
+        // Set status approved
+        bool SetStatusApproved(BlockingOutApp objApplication, ref ReturnMsgInfo returnMsg);
+
+        // Set status rejected
+        bool SetStatusRejected(BlockingOutApp objApplication, ref ReturnMsgInfo returnMsg);
     }
 }

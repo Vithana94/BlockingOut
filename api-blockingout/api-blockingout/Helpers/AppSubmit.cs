@@ -200,7 +200,7 @@ namespace api_rate.Helpers
 
                     if (this.mySqlCon != null)
                     {
-                        strSql = "INSERT INTO tbl_blockingout_applications( AppId ,UserId ,Applicant ,Address ,Email ,Telephone ,Location ,AssessmentNo ,Street ,DivisionNo ,SurvPlanNo ,Surveyor ,SizeOfLand ,CurrentUse ,LandFill ,LevelsOfRoad ,AttLandDevCorp ,IfAggriLand ,AttGoviJana ,DevResMatters ,DevComMatters ,DevIndMatters ,DevOutMatters ,DevGrounds ,DevStreets ,DevOther ,InfWaterExist ,InfWaterProp ,InfEffExist ,InfEffProp ,InfDrainExist ,InfDrainProp ,InfElecExist ,InfElecProp ,IfBuilDiv ,DatesofDev ,OriginalPlan ,MoreThanHectare ,ElecBoardApp ,WaterBoardApp ,Entrance ,Status ,AppliedDate ,AppRejDate ,ExpDate) VALUES (@AppId ,@UserId ,@Applicant ,@Address ,@Email ,@Telephone ,@Location ,@AssessmentNo ,@Street ,@DivisionNo ,@SurvPlanNo ,@Surveyor ,@SizeOfLand ,@CurrentUse ,@LandFill ,@LevelsOfRoad ,@AttLandDevCorp ,@IfAggriLand ,@AttGoviJana ,@DevResMatters ,@DevComMatters ,@DevIndMatters ,@DevOutMatters ,@DevGrounds ,@DevStreets ,@DevOther ,@InfWaterExist ,@InfWaterProp ,@InfEffExist ,@InfEffProp ,@InfDrainExist ,@InfDrainProp ,@InfElecExist ,@InfElecProp ,@IfBuilDiv ,@DatesofDev ,@OriginalPlan ,@MoreThanHectare ,@ElecBoardApp ,@WaterBoardApp ,@Entrance, @Status ,@AppliedDate ,@AppRejDate ,@ExpDate); UPDATE tbl_blockingout_index SET NextApplicationId=(NextApplicationId + 1);";
+                        strSql = "INSERT INTO tbl_blockingout_applications( AppId ,UserId ,Applicant ,Address ,Email ,Telephone ,Location ,AssessmentNo ,Street ,DivisionNo ,SurvPlanNo ,Surveyor ,SizeOfLand ,CurrentUse ,LandFill ,LevelsOfRoad ,AttLandDevCorp ,IfAggriLand ,AttGoviJana ,DevResMatters ,DevComMatters ,DevIndMatters ,DevOutMatters ,DevGrounds ,DevStreets ,DevOther ,InfWaterExist ,InfWaterProp ,InfEffExist ,InfEffProp ,InfDrainExist ,InfDrainProp ,InfElecExist ,InfElecProp ,IfBuilDiv ,DatesofDev ,OriginalPlan ,MoreThanHectare ,ElecBoardApp ,WaterBoardApp ,Entrance ,Status ,AppliedDate ,SurvayDate ,ActualSurvDate ,AppRejDate ,ExpDate) VALUES (@AppId ,@UserId ,@Applicant ,@Address ,@Email ,@Telephone ,@Location ,@AssessmentNo ,@Street ,@DivisionNo ,@SurvPlanNo ,@Surveyor ,@SizeOfLand ,@CurrentUse ,@LandFill ,@LevelsOfRoad ,@AttLandDevCorp ,@IfAggriLand ,@AttGoviJana ,@DevResMatters ,@DevComMatters ,@DevIndMatters ,@DevOutMatters ,@DevGrounds ,@DevStreets ,@DevOther ,@InfWaterExist ,@InfWaterProp ,@InfEffExist ,@InfEffProp ,@InfDrainExist ,@InfDrainProp ,@InfElecExist ,@InfElecProp ,@IfBuilDiv ,@DatesofDev ,@OriginalPlan ,@MoreThanHectare ,@ElecBoardApp ,@WaterBoardApp ,@Entrance, @Status ,@AppliedDate ,@SurvayDate ,@ActualSurvDate ,@AppRejDate ,@ExpDate); UPDATE tbl_blockingout_index SET NextApplicationId=(NextApplicationId + 1);";
                         cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
                         cmd.Parameters.AddWithValue("@AppId", objBlockingOut.AppID.ToString().Trim());
                         cmd.Parameters.AddWithValue("@UserID", objBlockingOut.UserID.ToString().Trim());
@@ -245,8 +245,10 @@ namespace api_rate.Helpers
                         cmd.Parameters.AddWithValue("@Entrance", objBlockingOut.Entrance.ToString().Trim());
                         cmd.Parameters.AddWithValue("@Status", Globals.PENDING.ToString().Trim());
                         cmd.Parameters.AddWithValue("@AppliedDate", objBlockingOut.AppliedDate.ToString().Trim());
+                        cmd.Parameters.AddWithValue("@SurvayDate", "");
+                        cmd.Parameters.AddWithValue("@ActualSurvDate", ""); 
                         cmd.Parameters.AddWithValue("@AppRejDate", "");
-                        cmd.Parameters.AddWithValue("@ExpDate", "");                        
+                        cmd.Parameters.AddWithValue("@ExpDate", "");                       
                         cmd.ExecuteNonQuery();
                         isSaved = true;
 
@@ -345,5 +347,190 @@ namespace api_rate.Helpers
             return objIndexes;
         }
 
+        // Assign surveyor
+        public bool AssignSurveyor(BlockingOutApp objApplication, ref ReturnMsgInfo returnMsg)
+        {
+            bool isAssigned = false;
+            objCmnFunctions = new CommonFunctions();
+
+            if (objCmnFunctions.IsValidDate(objApplication.SurvayDate) == false)
+            {
+                returnMsg.ReturnValue = "Error";
+                returnMsg.ReturnMessage = "Invalid Survey Date.";
+                isAssigned = false;
+            }
+            else
+            {
+
+                this.objConMain = new Connection_Main();
+                try
+                {
+                    string conString = this.objConMain.Get_Main_Connection(objApplication.ClientID);
+                    if (conString == null || conString == "")
+                    {
+                        returnMsg.ReturnValue = "Error";
+                        returnMsg.ReturnMessage = "Connection not found.";
+                    }
+                    else
+                    {
+                        this.mySqlCon = new MySqlConnection(conString);
+
+                        if (this.mySqlCon.State.ToString() != "Open")
+                        {
+                            this.mySqlCon.Open();
+                        }
+                        else
+                        {
+                            returnMsg.ReturnValue = "Error";
+                            returnMsg.ReturnMessage = "Connection was already opened.";
+                        }
+
+                        if (this.mySqlCon != null)
+                        {
+                            strSql = "UPDATE tbl_blockingout_applications SET Surveyor = '" + objApplication.Surveyor + "', SurvayDate = '" + objApplication.SurvayDate + "' WHERE Id = '" + objApplication.ID + "';";
+                            cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
+                            cmd.ExecuteNonQuery();
+                            isAssigned = true;
+
+                            returnMsg.ReturnValue = "OK";
+                            returnMsg.ReturnMessage = "Updated successfully";
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    returnMsg.ReturnValue = "Error";
+                    returnMsg.ReturnMessage = ex.Message;
+                }
+                finally
+                {
+                    if (this.mySqlCon != null)
+                    {
+                        if (this.mySqlCon.State.ToString() == "Open")
+                        {
+                            this.mySqlCon.Close();
+                        }
+                    }
+                }
+            }
+            return isAssigned;
+        }
+    
+        // Set status approved
+        public bool SetStatusApproved(BlockingOutApp objApplication, ref ReturnMsgInfo returnMsg)
+        {
+            bool isApproved = false;
+            this.objConMain = new Connection_Main();
+            try
+            {
+                string conString = this.objConMain.Get_Main_Connection(objApplication.ClientID);
+                if (conString == null || conString == "")
+                {
+                    returnMsg.ReturnValue = "Error";
+                    returnMsg.ReturnMessage = "Connection not found.";
+                }
+                else
+                {
+                    this.mySqlCon = new MySqlConnection(conString);
+
+                    if (this.mySqlCon.State.ToString() != "Open")
+                    {
+                        this.mySqlCon.Open();
+                    }
+                    else
+                    {
+                        returnMsg.ReturnValue = "Error";
+                        returnMsg.ReturnMessage = "Connection was already opened.";
+                    }
+
+                    if (this.mySqlCon != null)
+                    {
+                        strSql = "UPDATE tbl_blockingout_applications SET Status = '"+Globals.APPROVED.ToString().Trim()+"' WHERE Id = '" + objApplication.ID + "';";
+                        cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
+                        cmd.ExecuteNonQuery();
+                        isApproved = true;
+
+                        returnMsg.ReturnValue = "OK";
+                        returnMsg.ReturnMessage = "Updated successfully";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                returnMsg.ReturnValue = "Error";
+                returnMsg.ReturnMessage = ex.Message;
+            }
+            finally
+            {
+                if (this.mySqlCon != null)
+                {
+                    if (this.mySqlCon.State.ToString() == "Open")
+                    {
+                        this.mySqlCon.Close();
+                    }
+                }
+            }
+
+            return isApproved;
+        }
+
+        // Set status rejected
+        public bool SetStatusRejected(BlockingOutApp objApplication, ref ReturnMsgInfo returnMsg)
+        {
+            bool isRejected = false;
+
+            this.objConMain = new Connection_Main();
+            try
+            {
+                string conString = this.objConMain.Get_Main_Connection(objApplication.ClientID);
+                if (conString == null || conString == "")
+                {
+                    returnMsg.ReturnValue = "Error";
+                    returnMsg.ReturnMessage = "Connection not found.";
+                }
+                else
+                {
+                    this.mySqlCon = new MySqlConnection(conString);
+
+                    if (this.mySqlCon.State.ToString() != "Open")
+                    {
+                        this.mySqlCon.Open();
+                    }
+                    else
+                    {
+                        returnMsg.ReturnValue = "Error";
+                        returnMsg.ReturnMessage = "Connection was already opened.";
+                    }
+
+                    if (this.mySqlCon != null)
+                    {
+                        strSql = "UPDATE tbl_blockingout_applications SET Status = '" + Globals.REJECTED.ToString().Trim() + "' WHERE Id = '" + objApplication.ID + "';";
+                        cmd = new MySqlCommand(strSql, this.mySqlCon, this.mySqlTrans);
+                        cmd.ExecuteNonQuery();
+                        isRejected = true;
+
+                        returnMsg.ReturnValue = "OK";
+                        returnMsg.ReturnMessage = "Updated successfully";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                returnMsg.ReturnValue = "Error";
+                returnMsg.ReturnMessage = ex.Message;
+            }
+            finally
+            {
+                if (this.mySqlCon != null)
+                {
+                    if (this.mySqlCon.State.ToString() == "Open")
+                    {
+                        this.mySqlCon.Close();
+                    }
+                }
+            }
+
+            return isRejected;
+        }
     }
 }

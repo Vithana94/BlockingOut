@@ -9,13 +9,11 @@ namespace api_rate.Models
     {
         // Application Status
         public static string PENDING = "Pending";
-        public static string PAID = "Paid For Inspection";
-        public static string ASSIGNED = "Supervisor Assigned";
-        public static string HOLD = "Hold";
+        public static string PAID = "Processing Fee Paid";
+        public static string ASSIGNED = "Surveyor Assigned";
         public static string APPROVED = "Approved";
         public static string REJECTED = "Rejected";
-        public static string ISSUED = "Issued";
-        public static string PAIDFORCERT = "Paid For Certificate";
+
 
         // Payment Description
         public static string INSPECTION = "Inspection";
