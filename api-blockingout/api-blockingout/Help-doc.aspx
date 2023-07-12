@@ -38,48 +38,37 @@
         <div class="row">
             <div class="col-md-2 left-div" >
                 <div><asp:Label ID="lblGetData" runat="server" Text="To Get Data" Font-Bold="true" Font-Size="Larger"></asp:Label></div>
-                <div><a href="#apiFireApp" style="color:orange!important; font-size:small">01. Get Municipal Applications List</a></div>
-                <div><a href="#apiFireAppById" style="color:orange!important; font-size:small">02. Get Applications By Id</a></div>
-                <div><a href="#apiFireAppByIdUser" style="color:orange!important; font-size:small">03. Get Applications By Id For User</a></div>
-                <div><a href="#apiFireAppUId" style="color:orange!important; font-size:small" >03. Get Applications By User</a></div>
-                <div><a href="#apiSuperApp" style="color:orange!important; font-size:small" >04. Get All Fire Department Applications</a></div>
+                <div><a href="#apiAppListuser" style="color:orange!important; font-size:small">01. Get List of Applications By User</a></div>
+                <div><a href="#apiAppbyId" style="color:orange!important; font-size:small">02. Get An Application By Id</a></div>
+                <div><a href="#apiAppByIdUserID" style="color:orange!important; font-size:small">03. Get An Application By Id And UserId</a></div>
                 <br />
-                <div><a href="#apiFireAppSubmit" style=" font-size:small">05. Submit Application</a></div>                
-                <div><a href="#apiFireAppUpdate" style=" font-size:small">06. Update Application</a></div>
+                <div><a href="#apiAppSubmit" style=" font-size:small">05. Submit Application</a></div>                
                 <br />
                 <div><a href="#apiAppApprove" style="color:red!important; font-size:small" >07. Approve Application</a></div>
                 <div><a href="#apiAppReject" style="color:red!important; font-size:small" >08. Reject Application</a></div>
-                <div><a href="#apiAppHold" style="color:red!important; font-size:small" >09. Hold Application</a></div>
-                <div><a href="#apiAppIssue" style="color:red!important; font-size:small" >10. Issue Application</a></div>
-                <div><a href="#apiAppCollect" style="color:red!important; font-size:small" >11. Set Collection method</a></div>
-                <div><a href="#apiAssignSupervisor" style="color:red!important; font-size:small" >12. Assign Supervisor</a></div>
-                <div><a href="#apiSupervisorVisited" style="color:red!important; font-size:small" >13. Supervisor Status Update</a></div>
+                <div><a href="#apiAssignSurvayor" style="color:red!important; font-size:small" >12. Assign Supervisor</a></div>
                 <br />
                 <div><a href="#apiChargebyId" style=" font-size:small">14. Charges</a></div>
                 <div><a href="#apiPaymentSubmit" style=" font-size:small">15. Submit Payment</a></div>
                 <div><a href="#apiBankReturn" style="font-size:small" >16. Bank Return Message Saving</a></div>                       
                 <br />
-                <div><a href="#apiPendingbyDate" style="color:orange!important; font-size:small" >17. Pending Municipal applications by date</a></div>
                 <div><a href="#apiApprovedbyDate" style="color:orange!important; font-size:small" >18. Approved Municipal applications by date</a></div>
                 <div><a href="#apiRejectedbyDate" style="color:orange!important; font-size:small" >19. Rejected Municipal applications by date</a></div>
-                <div><a href="#apiHoldbyDate" style="color:orange!important; font-size:small" >20. Hold Municipal applications by date</a></div>           
                 <div><a href="#apiAssignedbyDate" style="color:orange!important; font-size:small" >21. Assigned Municipal applications by date</a></div>           
-                <div><a href="#apiPaidbyDate" style="color:orange!important; font-size:small" >22. Paid Municipal applications by date</a></div>           
                 <div><a href="#apiIssuedbyDate" style="color:orange!important; font-size:small" >23. Issued Municipal applications by date</a></div> 
-                <div><a href="#apiPaidForCertbyDate" style="color:orange!important; font-size:small" >24. PaidForCert Municipal applications by date</a></div>          
             </div>
             <div class="col-md-8 right-div">
                 <h3>API Help Document</h3>
                 <hr />
-                <%--=================================== 01. Get Municipal Applications List =====================================================--%>
-                <div id="apiFireApp">
-                    <h3 class="heading">Get Municipal Applications List</h3>
+                <%--=================================== 01. Get List of Applications By User ====================================================--%>
+                <div id="apiAppListuser">
+                    <h3 class="heading">Get List of Applications By User</h3>
                     <div>
                         <div>
                             <div>Introduction</div>
                         </div>
                         <div class="pre row">
-                            <div class="col-sm-12 ">This API helps to get all municipal council applications</div>
+                            <div class="col-sm-12 ">This API helps to get a list of applications by userID</div>
                         </div>
                     </div>
                     <div>
@@ -87,7 +76,7 @@
                             <div>Base URL</div>
                         </div>
                         <div class="pre row">
-                            <div class="col-sm-12 ">https://firecertificate-api.nekfa.com/api/FireAppAll</div>
+                            <div class="col-sm-12 ">https://blockingout-api.nekfa.com/api/BlockingOutListByUserId</div>
                         </div>
                     </div>
                     <div>
@@ -138,257 +127,9 @@
                                 </div>
                             </div>
                             <br />
-                        </div>
-                    </div>
-                    <div style="height: 400px; overflow-y: scroll; overflow-x: hidden;">
-                        <div>
-                            <div>Response</div>
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-3 ">Response type</div>
-                                <div class="col-sm-9">JSON</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 ">Response Status</div>
-                                <div class="col-sm-9">200 - OK</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 ">Response values</div>
-                                <div class="col-sm-9">
-                                    { 
-                                    &nbsp;&nbsp;"ListFireApplication": [
-                                    <br />
-                                    &nbsp;&nbsp;&nbsp;&nbsp; {
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Id": 1,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"CertificateId": "FC004",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"CompanyName": "Company1",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Address": "Company1, Colombo 07.",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Telephone": "0710859897",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DistanceFromCouncil": 7,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"NatureOfBusiness": "Sales",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"BuildingPlan": "plan.pdf",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"BuildingDescription": "Building Description in text",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"TotalLand": 10,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"RoadFromCouncil": "Highlevel rd.",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"OwnerName": "Owner Name",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"CurrentFirePlan": "Fire Extinguishers",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Status": "Pending",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Email": "useremail@mail.com",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DateApplied": "2023-06-02",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DateReviewed": "2023-06-02",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DateActReview": "2023-07-12",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DateIssued": "",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DateAppRej": "",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ClientID": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Supervisor": ""
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"StartDate": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"EndDate": null
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"RejectReason": "dgahksgdhdasdasdasdaasgdasd",
-                                    <br />                                    
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ApplicantName": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BOwnerName": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "LesseeName": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "EmergencyContact": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BAddress": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "OtherAddresses": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "DistRoadSigns": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ShortestRoad": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BTelephone": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Mobile": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "LandArea": 0,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Capacity": 0,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Stories": 0,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Construction": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BuildType": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "UnapprovedBuildings": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "PlanAvailability": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Exitways": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "EmergencyExits": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "DayManpower": 0,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "NightManpower": 0,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "TankCapacity": 0,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CommonTank": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "FirehoseLocation": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ElecPhase": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Generator": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CurrentCircuit": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "SupervisorVisited": "1",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
-                                    <br />
-                                     ],
-                                    <br />
-                                    "ListPayment": null,
-                                    <br />
-                                    "ReturnMessageInfo": {
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; "ReturnValue": "OK",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; "ReturnMessage": "Data found"
-                                    <br />
-                                     }
-                                    <br />
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>ReturnMessageInfo List</div>
-                            <br />
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-12 ">
-                                    "ReturnMessageInfo" is 2nd arry of the response and it has two objects "ReturnValue" and "ReturnMessage".
-                                </div>
-                            </div>
-                            <br />
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-5 ">Description</div>
-                                <div class="col-sm-2 ">ReturnValue</div>
-                                <div class="col-sm-5">ReturnMessage</div>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-5 ">If process successfully complete</div>
-                                <div class="col-sm-2 ">"OK"</div>
-                                <div class="col-sm-5">"Data found etc..."</div>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-5 ">If any error occured</div>
-                                <div class="col-sm-2 ">"Error"</div>
-                                <div class="col-sm-5">"Invalid Client ID, Connection not found etc..."</div>
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <%--=================================== 02. Get Applications By Id ==============================================================--%>
-                <div id="apiFireAppById">
-                    <h3 class="heading">Get Municipal Applications By Id</h3>
-                    <div>
-                        <div>
-                            <div>Introduction</div>
-                        </div>
-                        <div class="pre row">
-                            <div class="col-sm-12 ">This API helps to get a municipal council application by Id</div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>Base URL</div>
-                        </div>
-                        <div class="pre row">
-                            <div class="col-sm-12 ">https://firecertificate-api.nekfa.com/api/FireAppById</div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>Request type</div>
-                        </div>
-                        <div class="pre">
                             <div class="row">
-                                <div class="col-sm-3 ">Method</div>
-                                <div class="col-sm-9">POST</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 ">Content type</div>
-                                <div class="col-sm-9">application/json</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div>
-                            <div>List of parameters</div>
-                        </div>
-                        <div class="pre">
-                                <div class="row">
-                                <div class="col-sm-2 ">Id</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Application id.
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">int</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "Id":1
-                                    }
-                                </div>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-2 ">ClientID</div>
+                                <div class="col-sm-2 ">UserID</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
                                     To identify user.
@@ -409,7 +150,7 @@
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "ClientID":"TestId"
+                                      "UserID":"155"
                                     }
                                 </div>
                             </div>
@@ -433,164 +174,116 @@
                                 <div class="col-sm-3 ">Response values</div>
                                 <div class="col-sm-9">
                                     { 
-                                    &nbsp;&nbsp;"FireApplication": [
+                                    &nbsp;&nbsp;"ListBlockingOutApps": [
                                     <br />
                                     &nbsp;&nbsp;&nbsp;&nbsp; {
                                     <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ClientID": null,
+                                    <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Id": 1,
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"CertificateId": "FC004",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AppID": "BO1",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"CompanyName": "Company1",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"UserID": "155",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Applicant": "name",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Address": "Company1, Colombo 07.",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Telephone": "0710859897",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DistanceFromCouncil": 7,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"NatureOfBusiness": "Sales",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"BuildingPlan": "plan.pdf",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"BuildingDescription": "Building Description in text",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"TotalLand": 10,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"RoadFromCouncil": "Highlevel rd.",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"OwnerName": "Owner Name",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"CurrentFirePlan": "Fire Extinguishers",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Status": "Pending",
-                                    <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Email": "useremail@mail.com",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DateApplied": "2023-06-02",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Location": "location",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DateReviewed": "2023-06-02"
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AssessmentNo": "232",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DateIssued": "2023-06-23",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Street": "street",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DateAppRej": "2023-06-23",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DivisionNo": "Div",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ClientID": null,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"SurvPlanNo": "10",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Supervisor": ""
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Surveyor": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"StartDate": null,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"SizeOfLand": "45",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"EndDate": null
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"CurrentUse": "use of land",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "RejectReason": "",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"LandFill": "no",
+                                    <br />     
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"LevelsOfRoad": "1",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AttLandDevCorp": "attachment.name",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"IfAggriLand": "no",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AttGoviJana": "attachment.name",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DevResMatters": "",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DevComMatters": "",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DevIndMatters": "",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DevGrounds": "",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DevOutMatters": "",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DevStreets": "",
                                     <br />                                    
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ApplicantName": "App Name",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DevOther": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BOwnerName": "Owner",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InfWaterExist": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "LesseeName": "",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InfWaterProp": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "EmergencyContact": "Emergency Contact Person",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InfEffExist": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BAddress": "Highlevel rd., Colombo.",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InfEffProp": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "OtherAddresses": "",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InfDrainExist": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "DistRoadSigns": "",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InfDrainProp": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ShortestRoad": "",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InfElecExist": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BTelephone": "0710899898",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InfElecProp": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Mobile": "0710899898",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"IfBuilDiv": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "LandArea": 10,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DatesofDev": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Capacity": 10,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"OriginalPlan": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Stories": 5,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"MoreThanHectare": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Construction": "",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ElecBoardApp": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BuildType": "",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"WaterBoardApp": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "UnapprovedBuildings": "",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Entrance": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "PlanAvailability": "Avaliable",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Status": "Paid",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Exitways": "Two Exit ways",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AppliedDate": "2023/07/12 02:18",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "EmergencyExits": "Front door",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AppRejDate": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "DayManpower": 50,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "NightManpower": 2,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "TankCapacity": 20,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CommonTank": "",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "FirehoseLocation": "Locations",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ElecPhase": "Three phase",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Generator": "available",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CurrentCircuit": "",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "SupervisorVisited": "1",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CollectMethod": ""
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ExpDate": "",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
                                     <br />
                                      ],
                                     <br />
-                                    &nbsp;&nbsp;"PaymentDetails": [
-                                    <br />
-                                    &nbsp;&nbsp;&nbsp;&nbsp; {
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Id": 1,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"CertificateId": "FC004",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Note": "",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"TotAmt": 1500.00,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Date": "6/2/2023 13:00:",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"PaymentType": "Bank",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"PaidDescription": "Description",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"PaymentID": "123",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"BillNo": "B112",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"BankCharges": 100.00,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ConsultantFee": 1500.00,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InspectionFees": 5000.00,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AnnualCertificate": 0.00,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Postal": 1.44,
-                                    <br /> 
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
-                                    <br />
-                                     ],                                    
-                                    <br />                                                                                                                                             
-                                    "ReturnMessageInfo": {
+                                    "ReturnMsg": {
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; "ReturnValue": "OK",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; "ReturnMessage": "Data found"
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; "ReturnMessage": "Data found",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; "AppId": 0
-                                    <br />                                   
+                                    <br />
                                      }
                                     <br />
                                     }
@@ -632,15 +325,15 @@
                         </div>
                     </div>
                 </div>
-                <%--=================================== 02. Get Applications By Id For User =====================================================--%>
-                <div id="apiFireAppByIdUser">
-                    <h3 class="heading">Get Municipal Applications By Id For User</h3>
+                <%--=================================== 02. Get An Application By Id ============================================================--%>
+                <div id="apiAppbyId">
+                    <h3 class="heading">Get An Application By Id</h3>
                     <div>
                         <div>
                             <div>Introduction</div>
                         </div>
                         <div class="pre row">
-                            <div class="col-sm-12 ">This API helps to get a municipal council application by Id and UserId</div>
+                            <div class="col-sm-12 ">This API helps to get an application by ID</div>
                         </div>
                     </div>
                     <div>
@@ -648,7 +341,7 @@
                             <div>Base URL</div>
                         </div>
                         <div class="pre row">
-                            <div class="col-sm-12 ">https://firecertificate-api.nekfa.com/api/FireAppByIdUser</div>
+                            <div class="col-sm-12 ">https://blockingout-api.nekfa.com/api/BlockingOutById</div>
                         </div>
                     </div>
                     <div>
@@ -672,33 +365,6 @@
                             <div>List of parameters</div>
                         </div>
                         <div class="pre">
-                                <div class="row">
-                                <div class="col-sm-2 ">Id</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Application id.
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">int</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "Id":1
-                                    }
-                                </div>
-                            </div>
-                            <br />
                             <div class="row">
                                 <div class="col-sm-2 ">ClientID</div>
                                 <div class="col-sm-2 ">Description</div>
@@ -726,12 +392,12 @@
                                 </div>
                             </div>
                             <br />
-                            
+
                             <div class="row">
-                                <div class="col-sm-2 ">User</div>
+                                <div class="col-sm-2 ">ID</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    To identify user.
+                                    To identify application.
                                 </div>
                             </div>
                             <div class="row">
@@ -742,19 +408,17 @@
                             <div class="row">
                                 <div class="col-sm-2 "></div>
                                 <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
+                                <div class="col-sm-8 ">Int</div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-2 "></div>
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "User":"166"
+                                      "ID": 200
                                     }
                                 </div>
-
                             </div>
-
                             <br />
                         </div>
                     </div>
@@ -775,166 +439,114 @@
                                 <div class="col-sm-3 ">Response values</div>
                                 <div class="col-sm-9">
                                     { 
-                                    &nbsp;&nbsp;"FireApplication": [
+                                    &nbsp;&nbsp;"BlockingOutApplication": [
                                     <br />
                                     &nbsp;&nbsp;&nbsp;&nbsp; {
                                     <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ClientID": null,
+                                    <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Id": 1,
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"CertificateId": "FC004",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AppID": "BO1",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"CompanyName": "Company1",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"UserID": "155",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Applicant": "name",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Address": "Company1, Colombo 07.",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Telephone": "0710859897",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DistanceFromCouncil": 7,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"NatureOfBusiness": "Sales",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"BuildingPlan": "plan.pdf",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"BuildingDescription": "Building Description in text",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"TotalLand": 10,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"RoadFromCouncil": "Highlevel rd.",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"OwnerName": "Owner Name",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"CurrentFirePlan": "Fire Extinguishers",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Status": "Pending",
-                                    <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Email": "useremail@mail.com",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DateApplied": "2023-06-02",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Location": "location",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DateReviewed": "2023-06-02"
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AssessmentNo": "232",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DateActReview": "2023-07-12",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Street": "street",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DateIssued": "2023-06-23",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DivisionNo": "Div",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DateAppRej": "2023-06-23",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"SurvPlanNo": "10",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ClientID": null,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Surveyor": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Supervisor": ""
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"SizeOfLand": "45",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"StartDate": null,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"CurrentUse": "use of land",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"EndDate": null
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"LandFill": "no",
+                                    <br />     
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"LevelsOfRoad": "1",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "RejectReason": "",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AttLandDevCorp": "attachment.name",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"IfAggriLand": "no",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AttGoviJana": "attachment.name",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DevResMatters": "",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DevComMatters": "",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DevIndMatters": "",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DevGrounds": "",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DevOutMatters": "",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DevStreets": "",
                                     <br />                                    
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ApplicantName": "App Name",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DevOther": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BOwnerName": "Owner",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InfWaterExist": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "LesseeName": "",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InfWaterProp": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "EmergencyContact": "Emergency Contact Person",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InfEffExist": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BAddress": "Highlevel rd., Colombo.",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InfEffProp": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "OtherAddresses": "",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InfDrainExist": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "DistRoadSigns": "",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InfDrainProp": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ShortestRoad": "",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InfElecExist": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BTelephone": "0710899898",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InfElecProp": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Mobile": "0710899898",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"IfBuilDiv": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "LandArea": 10,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DatesofDev": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Capacity": 10,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"OriginalPlan": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Stories": 5,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"MoreThanHectare": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Construction": "",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ElecBoardApp": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BuildType": "",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"WaterBoardApp": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "UnapprovedBuildings": "",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Entrance": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "PlanAvailability": "Avaliable",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Status": "Paid",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Exitways": "Two Exit ways",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AppliedDate": "2023/07/12 02:18",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "EmergencyExits": "Front door",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AppRejDate": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "DayManpower": 50,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ExpDate": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "NightManpower": 2,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; },
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "TankCapacity": 20,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CommonTank": "",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "FirehoseLocation": "Locations",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ElecPhase": "Three phase",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Generator": "available",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CurrentCircuit": "",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "SupervisorVisited": "1",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CollectMethod": ""
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
-                                    <br />
-                                     ],
-                                    <br />
-                                    &nbsp;&nbsp;"PaymentDetails": [
-                                    <br />
-                                    &nbsp;&nbsp;&nbsp;&nbsp; {
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Id": 1,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"CertificateId": "FC004",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Note": "",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"TotAmt": 1500.00,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Date": "6/2/2023 13:00:",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"PaymentType": "Bank",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"PaidDescription": "Description",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"PaymentID": "123",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"BillNo": "B112",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"BankCharges": 100.00,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ConsultantFee": 1500.00,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InspectionFees": 5000.00,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AnnualCertificate": 0.00,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Postal": 1.44,
-                                    <br /> 
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
-                                    <br />
-                                     ],                                    
-                                    <br />                                                                                                                                             
-                                    "ReturnMessageInfo": {
+                                    "ReturnMsg": {
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; "ReturnValue": "OK",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; "ReturnMessage": "Data found"
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; "ReturnMessage": "Data found",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; "AppId": 0
-                                    <br />                                   
+                                    <br />
                                      }
                                     <br />
                                     }
@@ -976,15 +588,15 @@
                         </div>
                     </div>
                 </div>
-                <%--=================================== 03. Get Applications By User ============================================================--%>
-                <div id="apiFireAppUId">
-                    <h3 class="heading">Get Municipal Applications By User Id</h3>
+                <%--=================================== 02. Get An Application By Id And UserId =================================================--%>
+                <div id="apiAppByIdUserID">
+                    <h3 class="heading">Get An Application By Id And UserId</h3>
                     <div>
                         <div>
                             <div>Introduction</div>
                         </div>
                         <div class="pre row">
-                            <div class="col-sm-12 ">This API helps to get a list of municipal council applications by User Id</div>
+                            <div class="col-sm-12 ">This API helps to get an application by ID and UserID</div>
                         </div>
                     </div>
                     <div>
@@ -992,7 +604,7 @@
                             <div>Base URL</div>
                         </div>
                         <div class="pre row">
-                            <div class="col-sm-12 ">https://firecertificate-api.nekfa.com/api/FireAppByUserId</div>
+                            <div class="col-sm-12 ">https://blockingout-api.nekfa.com/api/BlockingOutByUserIdAndId</div>
                         </div>
                     </div>
                     <div>
@@ -1041,13 +653,39 @@
                                       "ClientID":"TestId"
                                     }
                                 </div>
-
                             </div>
-
                             <br />
 
                             <div class="row">
-                                <div class="col-sm-2 ">User</div>
+                                <div class="col-sm-2 ">ID</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    To identify application.
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Required</div>
+                                <div class="col-sm-8 ">Yes</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Data type</div>
+                                <div class="col-sm-8 ">Int</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Example</div>
+                                <div class="col-sm-8 ">
+                                    {
+                                      "ID": 200
+                                    }
+                                </div>
+                            </div>
+                            <br />
+
+                            <div class="row">
+                                <div class="col-sm-2 ">UserID</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
                                     To identify user.
@@ -1068,12 +706,10 @@
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "User":"166"
+                                      "UserID": "295"
                                     }
                                 </div>
-
                             </div>
-
                             <br />
                         </div>
                     </div>
@@ -1094,329 +730,113 @@
                                 <div class="col-sm-3 ">Response values</div>
                                 <div class="col-sm-9">
                                     { 
-                                    <br />
-                                    &nbsp;&nbsp;"ListFireApplication": [
+                                    &nbsp;&nbsp;"BlockingOutApplication": [
                                     <br />
                                     &nbsp;&nbsp;&nbsp;&nbsp; {
                                     <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ClientID": null,
+                                    <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Id": 1,
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"CertificateId": "FC004",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AppID": "BO1",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"CompanyName": "Company1",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"UserID": "155",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Applicant": "name",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Address": "Company1, Colombo 07.",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Telephone": "0710859897",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DistanceFromCouncil": 7,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"NatureOfBusiness": "Sales",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"BuildingPlan": "plan.pdf",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"BuildingDescription": "Building Description in text",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"TotalLand": 10,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"RoadFromCouncil": "Highlevel rd.",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"OwnerName": "Owner Name",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"CurrentFirePlan": "Fire Extinguishers",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Status": "Pending",
-                                    <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Email": "useremail@mail.com",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DateApplied": "2023-06-02",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Location": "location",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DateReviewed": "2023-06-02"
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AssessmentNo": "232",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DateActReview": "2023-07-12",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Street": "street",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DateIssued": "2023-06-23",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DivisionNo": "Div",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DateAppRej": "2023-06-23",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"SurvPlanNo": "10",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ClientID": null,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Surveyor": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Supervisor": ""
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"SizeOfLand": "45",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"StartDate": null,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"CurrentUse": "use of land",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"EndDate": null
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"LandFill": "no",
+                                    <br />     
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"LevelsOfRoad": "1",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "RejectReason": "",
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AttLandDevCorp": "attachment.name",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"IfAggriLand": "no",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AttGoviJana": "attachment.name",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DevResMatters": "",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DevComMatters": "",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DevIndMatters": "",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DevGrounds": "",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DevOutMatters": "",
+                                    <br />
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DevStreets": "",
                                     <br />                                    
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ApplicantName": null,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DevOther": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BOwnerName": null,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InfWaterExist": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "LesseeName": null,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InfWaterProp": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "EmergencyContact": null,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InfEffExist": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BAddress": null,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InfEffProp": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "OtherAddresses": null,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InfDrainExist": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "DistRoadSigns": null,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InfDrainProp": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ShortestRoad": null,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InfElecExist": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BTelephone": null,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InfElecProp": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Mobile": null,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"IfBuilDiv": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "LandArea": 0,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DatesofDev": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Capacity": 0,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"OriginalPlan": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Stories": 0,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"MoreThanHectare": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Construction": null,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ElecBoardApp": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BuildType": null,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"WaterBoardApp": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "UnapprovedBuildings": null,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Entrance": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "PlanAvailability": null,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Status": "Paid",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Exitways": null,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AppliedDate": "2023/07/12 02:18",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "EmergencyExits": null,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AppRejDate": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "DayManpower": 0,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ExpDate": "",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "NightManpower": 0,
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; },
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "TankCapacity": 0,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CommonTank": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "FirehoseLocation": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ElecPhase": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Generator": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CurrentCircuit": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
-                                    <br />
-                                     ],
-                                    <br />
-                                    &nbsp;&nbsp;"ListPayment": null,
-                                    <br />                                                                                                                                            
-                                    &nbsp;&nbsp;"ReturnMessageInfo": {
+                                    "ReturnMsg": {
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; "ReturnValue": "OK",
                                     <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; "ReturnMessage": "Data found"
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; "ReturnMessage": "Data found",
                                     <br />
-                                     }
-                                    <br />
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>ReturnMessageInfo List</div>
-                            <br />
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-12 ">
-                                    "ReturnMessageInfo" is 2nd arry of the response and it has two objects "ReturnValue" and "ReturnMessage".
-                                </div>
-                            </div>
-                            <br />
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-5 ">Description</div>
-                                <div class="col-sm-2 ">ReturnValue</div>
-                                <div class="col-sm-5">ReturnMessage</div>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-5 ">If process successfully complete</div>
-                                <div class="col-sm-2 ">"OK"</div>
-                                <div class="col-sm-5">"Data found etc..."</div>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-5 ">If any error occured</div>
-                                <div class="col-sm-2 ">"Error"</div>
-                                <div class="col-sm-5">"Invalid Client ID, Connection not found etc..."</div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <%--=================================== 04. Get All Fire Department Applications ================================================--%>
-                <div id="apiSuperApp">
-                    <h3 class="heading">Get All Fire Department Applications</h3>
-                    <div>
-                        <div>
-                            <div>Introduction</div>
-                        </div>
-                        <div class="pre row">
-                            <div class="col-sm-12 ">This API helps to get all Fire Department applications</div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>Base URL</div>
-                        </div>
-                        <div class="pre row">
-                            <div class="col-sm-12 ">https://firecertificate-api.nekfa.com/api/SuperAppAll</div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>Request type</div>
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-3 ">Method</div>
-                                <div class="col-sm-9">POST</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 ">Content type</div>
-                                <div class="col-sm-9">application/json</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div>
-                            <div>List of parameters</div>
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-2 ">ClientID</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    To identify user.
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "ClientID":"TestId"
-                                    }
-                                </div>
-
-                            </div>
-
-                            <br />
-                        </div>
-                    </div>
-                    <div style="height: 400px; overflow-y: scroll; overflow-x: hidden;">
-                        <div>
-                            <div>Response</div>
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-3 ">Response type</div>
-                                <div class="col-sm-9">JSON</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 ">Response Status</div>
-                                <div class="col-sm-9">200 - OK</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 ">Response values</div>
-                                <div class="col-sm-9">
-                                    { 
-                                    &nbsp;&nbsp;"ListSuperApplication": [
-                                    <br />
-                                    &nbsp;&nbsp;&nbsp;&nbsp; {
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Id": 1,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CertificateId": "FC004",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ApplicantName": "App Name",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BOwnerName": "Owner",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "LesseeName": "",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "EmergencyContact": "Emergency Contact Person",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BAddress": "Highlevel rd., Colombo.",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "OtherAddresses": "",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "DistRoadSigns": "",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ShortestRoad": "",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BTelephone": "0710899898",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Mobile": "0710899898",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "LandArea": 10,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Capacity": 10,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Stories": 5,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Construction": "",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BuildType": "",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "UnapprovedBuildings": "",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "PlanAvailability": "Avaliable",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Exitways": "Two Exit ways",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "EmergencyExits": "Front door",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "DayManpower": 50,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "NightManpower": 2,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "TankCapacity": 20,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CommonTank": "",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "FirehoseLocation": "Locations",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ElecPhase": "Three phase",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Generator": "available",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CurrentCircuit": "",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ClientID": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
-                                    <br />
-                                     ],
-                                    <br />
-                                    "ReturnMessageInfo": {
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; "ReturnValue": "OK",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; "ReturnMessage": "Data found"
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; "AppId": 0
                                     <br />
                                      }
                                     <br />
@@ -1460,14 +880,14 @@
                     </div>
                 </div>
                 <%--=================================== 05. Submit Application ==================================================================--%>
-                <div id="apiFireAppSubmit">
+                <div id="apiAppSubmit">
                     <h3 class="heading">Submit Application</h3>
                     <div>
                         <div>
                             <div>Introduction</div>
                         </div>
                         <div class="pre row">
-                            <div class="col-sm-12 ">This API helps to submit the complete Application with two parts </div>
+                            <div class="col-sm-12 ">This API helps to submit a blocking out application </div>
                         </div>
                     </div>
                     <div>
@@ -1475,7 +895,7 @@
                             <div>Base URL</div>
                         </div>
                         <div class="pre row">
-                            <div class="col-sm-12 ">https://firecertificate-api.nekfa.com/api/AppSubmit</div>
+                            <div class="col-sm-12 ">https://https://blockingout-api.nekfa.com/api/AppSubmit</div>
                         </div>
                     </div>
                     <div>
@@ -1500,7 +920,35 @@
                         </div>
                         <div class="pre">
                             <div class="row">
-                                <div class="col-sm-2 ">User</div>
+                                <div class="col-sm-2 ">ClientID</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    To identify user.
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Required</div>
+                                <div class="col-sm-8 ">Yes</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Data type</div>
+                                <div class="col-sm-8 ">String</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Example</div>
+                                <div class="col-sm-8 ">
+                                    {
+                                      "ClientID":"TestId"
+                                    }
+                                </div>
+                            </div>
+                            <br />
+
+                            <div class="row">
+                                <div class="col-sm-2 ">UserID</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
                                     To identify user.
@@ -1526,14 +974,13 @@
                                 </div>
 
                             </div>
-
                             <br />
 
                             <div class="row">
-                                <div class="col-sm-2 ">CompanyName</div>
+                                <div class="col-sm-2 ">Applicant</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    Company Name
+                                    Applicant Name
                                 </div>
                             </div>
                             <div class="row">
@@ -1551,7 +998,7 @@
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "CompanyName": "CompanyName"
+                                      "Applicant": "ApplicantName"
                                     }
                                 </div>
                             </div>
@@ -1561,7 +1008,7 @@
                                 <div class="col-sm-2 ">Address</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    Company Address
+                                    Address
                                 </div>
                             </div>
                             <div class="row">
@@ -1579,7 +1026,7 @@
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "Address": "CompanyName, Colombo"
+                                      "Address": "Colombo"
                                     }
                                 </div>
                             </div>
@@ -1614,230 +1061,6 @@
                             <br />
 
                             <div class="row">
-                            <div class="col-sm-2 ">DistanceFromCouncil</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Distance From Council
-                            </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">int</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "DistanceFromCouncil": 10
-                                    }
-                                </div>
-                            </div>
-                            <br />
-
-                            <div class="row">
-                            <div class="col-sm-2 ">NatureOfBusiness</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Nature Of Business
-                            </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "NatureOfBusiness": "Sales"
-                                    }
-                                </div>
-                            </div>
-                            <br />
-
-                            <div class="row">
-                            <div class="col-sm-2 ">BuildingPlan</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Building plan attachment
-                            </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "BuildingPlan": "plan.pdf"
-                                    }
-                                </div>
-                            </div>
-                            <br />
-
-                            <div class="row">
-                            <div class="col-sm-2 ">BuildingDescription</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Building plan Description
-                            </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">No</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "BuildingPlan": "Building Description in text"
-                                    }
-                                </div>
-                            </div>
-                            <br />
-
-                            <div class="row">
-                            <div class="col-sm-2 ">TotalLand</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Land Area
-                            </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">Int</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "TotalLand": 10
-                                    }
-                                </div>
-                            </div>
-                            <br />
-
-                            <div class="row">
-                            <div class="col-sm-2 ">RoadFromCouncil</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Description of Road From Council
-                            </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "RoadFromCouncil": "Road"
-                                    }
-                                </div>
-                            </div>
-                            <br />
-
-                            <div class="row">
-                            <div class="col-sm-2 ">OwnerName</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Name of Owner
-                            </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "OwnerName": "Owner"
-                                    }
-                                </div>
-                            </div>
-                            <br />
-
-                            <div class="row">
-                            <div class="col-sm-2 ">CurrentFirePlan</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Current fire protection plan description
-                            </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "CurrentFirePlan": "Plan"
-                                    }
-                                </div>
-                            </div>
-                            <br />                           
-
-                            <div class="row">
                             <div class="col-sm-2 ">Email</div>
                             <div class="col-sm-2 ">Description</div>
                             <div class="col-sm-8 ">
@@ -1863,13 +1086,237 @@
                                     }
                                 </div>
                             </div>
-                            <br />                           
+                            <br />
 
                             <div class="row">
-                                <div class="col-sm-2 ">ClientID</div>
+                            <div class="col-sm-2 ">Location</div>
+                            <div class="col-sm-2 ">Description</div>
+                            <div class="col-sm-8 ">
+                                Location name
+                            </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Required</div>
+                                <div class="col-sm-8 ">Yes</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Data type</div>
+                                <div class="col-sm-8 ">String</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Example</div>
+                                <div class="col-sm-8 ">
+                                    {
+                                      "Location": "Location"
+                                    }
+                                </div>
+                            </div>
+                            <br />
+
+                            <div class="row">
+                            <div class="col-sm-2 ">AssessmentNo</div>
+                            <div class="col-sm-2 ">Description</div>
+                            <div class="col-sm-8 ">
+                                Assessment Number
+                            </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Required</div>
+                                <div class="col-sm-8 ">Yes</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Data type</div>
+                                <div class="col-sm-8 ">String</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Example</div>
+                                <div class="col-sm-8 ">
+                                    {
+                                      "AssessmentNo": "34"
+                                    }
+                                </div>
+                            </div>
+                            <br />
+
+                            <div class="row">
+                            <div class="col-sm-2 ">Street</div>
+                            <div class="col-sm-2 ">Description</div>
+                            <div class="col-sm-8 ">
+                                Street name
+                            </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Required</div>
+                                <div class="col-sm-8 ">Yes</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Data type</div>
+                                <div class="col-sm-8 ">String</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Example</div>
+                                <div class="col-sm-8 ">
+                                    {
+                                      "Street": "Street"
+                                    }
+                                </div>
+                            </div>
+                            <br />
+
+                            <div class="row">
+                            <div class="col-sm-2 ">DivisionNo</div>
+                            <div class="col-sm-2 ">Description</div>
+                            <div class="col-sm-8 ">
+                                Division Number
+                            </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Required</div>
+                                <div class="col-sm-8 ">No</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Data type</div>
+                                <div class="col-sm-8 ">String</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Example</div>
+                                <div class="col-sm-8 ">
+                                    {
+                                      "DivisionNo": "DivisionNo"
+                                    }
+                                </div>
+                            </div>
+                            <br />
+
+                            <div class="row">
+                            <div class="col-sm-2 ">SurvPlanNo</div>
+                            <div class="col-sm-2 ">Description</div>
+                            <div class="col-sm-8 ">
+                                Survay Plan Number
+                            </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Required</div>
+                                <div class="col-sm-8 ">Yes</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Data type</div>
+                                <div class="col-sm-8 ">String</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Example</div>
+                                <div class="col-sm-8 ">
+                                    {
+                                      "SurvPlanNo": "5454"
+                                    }
+                                </div>
+                            </div>
+                            <br />
+
+                            <div class="row">
+                            <div class="col-sm-2 ">SizeOfLand</div>
+                            <div class="col-sm-2 ">Description</div>
+                            <div class="col-sm-8 ">
+                                Size Of Land
+                            </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Required</div>
+                                <div class="col-sm-8 ">Yes</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Data type</div>
+                                <div class="col-sm-8 ">String</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Example</div>
+                                <div class="col-sm-8 ">
+                                    {
+                                      "SizeOfLand": "45"
+                                    }
+                                </div>
+                            </div>
+                            <br />
+
+                            <div class="row">
+                            <div class="col-sm-2 ">CurrentUse</div>
+                            <div class="col-sm-2 ">Description</div>
+                            <div class="col-sm-8 ">
+                                Current Use of land
+                            </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Required</div>
+                                <div class="col-sm-8 ">Yes</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Data type</div>
+                                <div class="col-sm-8 ">String</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Example</div>
+                                <div class="col-sm-8 ">
+                                    {
+                                      "CurrentUse": "Current Use"
+                                    }
+                                </div>
+                            </div>
+                            <br />
+
+                            <div class="row">
+                            <div class="col-sm-2 ">LandFill</div>
+                            <div class="col-sm-2 ">Description</div>
+                            <div class="col-sm-8 ">
+                                If Land is Filled for development
+                            </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Required</div>
+                                <div class="col-sm-8 ">Yes</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Data type</div>
+                                <div class="col-sm-8 ">String</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Example</div>
+                                <div class="col-sm-8 ">
+                                    {
+                                      "LandFill": "LandFill"
+                                    }
+                                </div>
+                            </div>
+                            <br />                                                      
+
+                            <div class="row">
+                                <div class="col-sm-2 ">LevelsOfRoad</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    To identify user.
+                                    Levels Of Road
                                 </div>
                             </div>
                             <div class="row">
@@ -1887,18 +1334,18 @@
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "ClientID":"TestId"
+                                      "LevelsOfRoad": "Levels Of Road"
                                     }
                                 </div>
 
                             </div>
                             <br />
-                            <!------------------------------------------------------- SuperApp --------------------------------------------------------------------------------------->
+
                             <div class="row">
-                                <div class="col-sm-2 ">ApplicantName</div>
+                                <div class="col-sm-2 ">AttLandDevCorp</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    Applicant Name
+                                    Attachment name of letter from land develeopment corporation
                                 </div>
                             </div>
                             <div class="row">
@@ -1916,7 +1363,7 @@
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "ApplicantName": "Applicant Name"
+                                      "AttLandDevCorp": "AttLandDevCorp"
                                     }
                                 </div>
 
@@ -1924,39 +1371,10 @@
                             <br />
 
                             <div class="row">
-                                <div class="col-sm-2 ">BOwnerName</div>
+                                <div class="col-sm-2 ">IfAggriLand</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    Building Owner Name
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "BOwnerName": "Owner Name"
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">LesseeName</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Lessee Name
+                                    If its an aggricultural land
                                 </div>
                             </div>
                             <div class="row">
@@ -1974,7 +1392,7 @@
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "LesseeName": ""
+                                      "IfAggriLand": "yes"
                                     }
                                 </div>
 
@@ -1982,10 +1400,10 @@
                             <br />
 
                             <div class="row">
-                                <div class="col-sm-2 ">EmergencyContact</div>
+                                <div class="col-sm-2 ">AttGoviJana</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    Emergency Contact Person
+                                    Attachment from Govi Jana Seva Saba
                                 </div>
                             </div>
                             <div class="row">
@@ -2003,7 +1421,7 @@
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "EmergencyContact": "Contact Person Name"
+                                      "AttGoviJana": "AttGoviJana"
                                     }
                                 </div>
 
@@ -2011,10 +1429,10 @@
                             <br />
 
                             <div class="row">
-                                <div class="col-sm-2 ">BAddress</div>
+                                <div class="col-sm-2 ">DevResMatters</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    Building Address
+                                    Develeopment for Residential Matters
                                 </div>
                             </div>
                             <div class="row">
@@ -2032,7 +1450,7 @@
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "BAddress": "Company Name, Colombo rd."
+                                      "DevResMatters": "DevResMatters."
                                     }
                                 </div>
 
@@ -2040,10 +1458,10 @@
                             <br />
 
                             <div class="row">
-                                <div class="col-sm-2 ">OtherAddresses</div>
+                                <div class="col-sm-2 ">DevComMatters</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    Other Addresses
+                                    Development for commercial matters
                                 </div>
                             </div>
                             <div class="row">
@@ -2061,7 +1479,7 @@
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "OtherAddresses": ""
+                                      "DevComMatters": ""
                                     }
                                 </div>
 
@@ -2069,10 +1487,10 @@
                             <br />
 
                             <div class="row">
-                                <div class="col-sm-2 ">DistRoadSigns</div>
+                                <div class="col-sm-2 ">DevIndMatters</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    Distinguishing Road Signs
+                                    Develeopment for Industrial Matters
                                 </div>
                             </div>
                             <div class="row">
@@ -2090,7 +1508,7 @@
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "DistRoadSigns": ""
+                                      "DevIndMatters": ""
                                     }
                                 </div>
 
@@ -2098,10 +1516,10 @@
                             <br />
 
                             <div class="row">
-                                <div class="col-sm-2 ">ShortestRoad</div>
+                                <div class="col-sm-2 ">DevOutMatters</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    Shortest road to the company
+                                    Develeopment for Outdoor areas
                                 </div>
                             </div>
                             <div class="row">
@@ -2119,7 +1537,7 @@
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "ShortestRoad": "road description"
+                                      "DevOutMatters": ""
                                     }
                                 </div>
 
@@ -2127,10 +1545,10 @@
                             <br />
 
                             <div class="row">
-                                <div class="col-sm-2 ">BTelephone</div>
+                                <div class="col-sm-2 ">DevGrounds</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    Building Telephone
+                                    Development for playgrounds
                                 </div>
                             </div>
                             <div class="row">
@@ -2148,7 +1566,7 @@
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "BTelephone": "0710457845"
+                                      "DevGrounds": ""
                                     }
                                 </div>
 
@@ -2156,10 +1574,10 @@
                             <br />
 
                             <div class="row">
-                                <div class="col-sm-2 ">Mobile</div>
+                                <div class="col-sm-2 ">DevStreets</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    Mobile
+                                    Development of Streets
                                 </div>
                             </div>
                             <div class="row">
@@ -2177,7 +1595,7 @@
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "Mobile": "0710457845"
+                                      "DevStreets": ""
                                     }
                                 </div>
 
@@ -2185,10 +1603,10 @@
                             <br />
 
                             <div class="row">
-                                <div class="col-sm-2 ">LandArea</div>
+                                <div class="col-sm-2 ">DevOther</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    Land Area
+                                    Other developments
                                 </div>
                             </div>
                             <div class="row">
@@ -2199,14 +1617,14 @@
                             <div class="row">
                                 <div class="col-sm-2 "></div>
                                 <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">int</div>
+                                <div class="col-sm-8 ">String</div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-2 "></div>
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "LandArea": 5
+                                      "DevOther": ""
                                     }
                                 </div>
 
@@ -2214,10 +1632,10 @@
                             <br />
 
                             <div class="row">
-                                <div class="col-sm-2 ">Capacity</div>
+                                <div class="col-sm-2 ">InfWaterExist</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    Building Capacity
+                                    Information about existing water supply
                                 </div>
                             </div>
                             <div class="row">
@@ -2228,14 +1646,14 @@
                             <div class="row">
                                 <div class="col-sm-2 "></div>
                                 <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">int</div>
+                                <div class="col-sm-8 ">String</div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-2 "></div>
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "Capacity": 25
+                                      "InfWaterExist": ""
                                     }
                                 </div>
 
@@ -2243,10 +1661,10 @@
                             <br />
 
                             <div class="row">
-                                <div class="col-sm-2 ">Stories</div>
+                                <div class="col-sm-2 ">InfWaterProp</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    Number of Stories
+                                    information about proposed water supply
                                 </div>
                             </div>
                             <div class="row">
@@ -2257,14 +1675,14 @@
                             <div class="row">
                                 <div class="col-sm-2 "></div>
                                 <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">int</div>
+                                <div class="col-sm-8 ">String</div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-2 "></div>
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "Stories": 5
+                                      "InfWaterProp": ""
                                     }
                                 </div>
 
@@ -2272,10 +1690,10 @@
                             <br />
 
                             <div class="row">
-                                <div class="col-sm-2 ">Construction</div>
+                                <div class="col-sm-2 ">InfEffExist</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    Construction
+                                    Information about existing effluent water management
                                 </div>
                             </div>
                             <div class="row">
@@ -2293,7 +1711,7 @@
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "Construction": ""
+                                      "InfEffExist": ""
                                     }
                                 </div>
 
@@ -2301,10 +1719,10 @@
                             <br />
 
                             <div class="row">
-                                <div class="col-sm-2 ">BuildType</div>
+                                <div class="col-sm-2 ">InfEffProp</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    BuildType
+                                    Information about proposed effluent water management
                                 </div>
                             </div>
                             <div class="row">
@@ -2322,7 +1740,7 @@
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "BuildType": ""
+                                      "InfEffProp": ""
                                     }
                                 </div>
 
@@ -2330,10 +1748,10 @@
                             <br />
 
                             <div class="row">
-                                <div class="col-sm-2 ">UnapprovedBuildings</div>
+                                <div class="col-sm-2 ">InfDrainExist</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    If there are Unapproved Buildings
+                                    Information about existing dranage
                                 </div>
                             </div>
                             <div class="row">
@@ -2351,7 +1769,7 @@
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "UnapprovedBuildings": ""
+                                      "InfDrainExist": ""
                                     }
                                 </div>
 
@@ -2359,10 +1777,10 @@
                             <br />
 
                             <div class="row">
-                                <div class="col-sm-2 ">PlanAvailability</div>
+                                <div class="col-sm-2 ">InfDrainProp</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    Plan Availability
+                                    Information about proposed dranage
                                 </div>
                             </div>
                             <div class="row">
@@ -2380,7 +1798,7 @@
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "PlanAvailability": "available"
+                                      "InfDrainProp": ""
                                     }
                                 </div>
 
@@ -2388,10 +1806,10 @@
                             <br />
 
                             <div class="row">
-                                <div class="col-sm-2 ">Exitways</div>
+                                <div class="col-sm-2 ">InfElecExist</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    Exit ways
+                                    Information about existing electricity
                                 </div>
                             </div>
                             <div class="row">
@@ -2409,7 +1827,7 @@
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "Exitways": "two exit ways"
+                                      "InfElecExist": ""
                                     }
                                 </div>
 
@@ -2417,10 +1835,10 @@
                             <br />
 
                             <div class="row">
-                                <div class="col-sm-2 ">EmergencyExits</div>
+                                <div class="col-sm-2 ">InfElecProp</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    Emergency Exits
+                                    Information about proposed electricity
                                 </div>
                             </div>
                             <div class="row">
@@ -2438,7 +1856,7 @@
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "EmergencyExits": "Description of exits"
+                                      "InfElecProp": ""
                                     }
                                 </div>
 
@@ -2446,97 +1864,10 @@
                             <br />
 
                             <div class="row">
-                                <div class="col-sm-2 ">DayManpower</div>
+                                <div class="col-sm-2 ">IfBuilDiv</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    Manpower in day time
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">int</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "DayManpower": 10
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">NightManpower</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Manpower in night time
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">int</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "NightManpower": 10
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">TankCapacity</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Water tank capacity
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">int</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "TankCapacity": 10
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">CommonTank</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Common tank
+                                    If a building is divided
                                 </div>
                             </div>
                             <div class="row">
@@ -2554,7 +1885,7 @@
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "CommonTank": "Common tank info."
+                                      "IfBuilDiv": ""
                                     }
                                 </div>
 
@@ -2562,10 +1893,10 @@
                             <br />
 
                             <div class="row">
-                                <div class="col-sm-2 ">FirehoseLocation</div>
+                                <div class="col-sm-2 ">DatesofDev</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    Fire hose location
+                                    Estimated dates for development
                                 </div>
                             </div>
                             <div class="row">
@@ -2583,7 +1914,7 @@
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "FirehoseLocation": "Fire hose location info."
+                                      "DatesofDev": ""
                                     }
                                 </div>
 
@@ -2591,10 +1922,10 @@
                             <br />
 
                             <div class="row">
-                                <div class="col-sm-2 ">ElecPhase</div>
+                                <div class="col-sm-2 ">OriginalPlan</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    Electricity Phase
+                                    attachment of original plan of land
                                 </div>
                             </div>
                             <div class="row">
@@ -2612,7 +1943,7 @@
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "ElecPhase": "Electricity phase info."
+                                      "OriginalPlan": ""
                                     }
                                 </div>
 
@@ -2620,10 +1951,10 @@
                             <br />
 
                             <div class="row">
-                                <div class="col-sm-2 ">Generator</div>
+                                <div class="col-sm-2 ">MoreThanHectare</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    Generator info
+                                    if land is More Than one Hectare
                                 </div>
                             </div>
                             <div class="row">
@@ -2641,7 +1972,7 @@
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "Generator": "Generator info."
+                                      "MoreThanHectare": "Yes"
                                     }
                                 </div>
 
@@ -2649,10 +1980,10 @@
                             <br />
 
                             <div class="row">
-                                <div class="col-sm-2 ">CurrentCircuit</div>
+                                <div class="col-sm-2 ">ElecBoardApp</div>
                                 <div class="col-sm-2 ">Description</div>
                                 <div class="col-sm-8 ">
-                                    Current circuit info
+                                    Attachment of approval from electricity board
                                 </div>
                             </div>
                             <div class="row">
@@ -2670,12 +2001,71 @@
                                 <div class="col-sm-2 ">Example</div>
                                 <div class="col-sm-8 ">
                                     {
-                                      "CurrentCircuit": "Current circuit info."
+                                      "ElecBoardApp": ""
                                     }
                                 </div>
 
                             </div>
                             <br />
+
+                            <div class="row">
+                                <div class="col-sm-2 ">WaterBoardApp</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    Attachment of approval from water board
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Required</div>
+                                <div class="col-sm-8 ">Yes</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Data type</div>
+                                <div class="col-sm-8 ">String</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Example</div>
+                                <div class="col-sm-8 ">
+                                    {
+                                      "WaterBoardApp": ""
+                                    }
+                                </div>
+
+                            </div>
+                            <br />
+
+                            <div class="row">
+                                <div class="col-sm-2 ">Entrance</div>
+                                <div class="col-sm-2 ">Description</div>
+                                <div class="col-sm-8 ">
+                                    attachment of entrance to land
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Required</div>
+                                <div class="col-sm-8 ">Yes</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Data type</div>
+                                <div class="col-sm-8 ">String</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 ">Example</div>
+                                <div class="col-sm-8 ">
+                                    {
+                                      "Entrance": ""
+                                    }
+                                </div>
+
+                            </div>
+                            <br />
+
                         </div>
                     </div>
                     <div style="overflow-y: hidden; overflow-x: hidden;">
@@ -2701,1285 +2091,6 @@
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ReturnMessage": "Application details successfully submitted.",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AppId": 260
-                                    <br />
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>ReturnMessageInfo List</div>
-                            <br />
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-12 ">
-                                    "ReturnMessageInfo" is 2nd arry of the response and it has two objects "ReturnValue" and "ReturnMessage".
-                                </div>
-                            </div>
-                            <br />
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-5 ">Description</div>
-                                <div class="col-sm-2 ">ReturnValue</div>
-                                <div class="col-sm-5">ReturnMessage</div>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-5 ">If process successfully complete</div>
-                                <div class="col-sm-2 ">"OK"</div>
-                                <div class="col-sm-5">"Data found etc..."</div>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-5 ">If any error occured</div>
-                                <div class="col-sm-2 ">"Error"</div>
-                                <div class="col-sm-5">"Invalid Client ID, Connection not found etc..."</div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <%--=================================== 06. Update Application ==================================================================--%>
-                <div id="apiFireAppUpdate">
-                    <h3 class="heading">Update Application</h3>
-                    <div>
-                        <div>
-                            <div>Introduction</div>
-                        </div>
-                        <div class="pre row">
-                            <div class="col-sm-12 ">This API helps to update an application by Certificate Id</div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>Base URL</div>
-                        </div>
-                        <div class="pre row">
-                            <div class="col-sm-12 ">https://firecertificate-api.nekfa.com/api/AppSubmit</div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>Request type</div>
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-3 ">Method</div>
-                                <div class="col-sm-9">POST</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 ">Content type</div>
-                                <div class="col-sm-9">application/json</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div style="height: 400px; overflow-y: scroll; overflow-x: hidden;">
-                        <div>
-                            <div>List of parameters</div>
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-2 ">CertificateId</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Application id.
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "CertificateId": "FC001"
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">CompanyName</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Company Name
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">string</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "CompanyName": "CompanyName"
-                                    }
-                                </div>
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">Address</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Company Address
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">string</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "Address": "CompanyName, Colombo"
-                                    }
-                                </div>
-                            </div>
-                            <br />
-
-                            <div class="row">
-                            <div class="col-sm-2 ">Telephone</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Telephone number
-                            </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">string</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "Telephone": "0711898989"
-                                    }
-                                </div>
-                            </div>
-                            <br />
-
-                            <div class="row">
-                            <div class="col-sm-2 ">DistanceFromCouncil</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Distance From Council
-                            </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">int</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "DistanceFromCouncil": 10
-                                    }
-                                </div>
-                            </div>
-                            <br />
-
-                            <div class="row">
-                            <div class="col-sm-2 ">NatureOfBusiness</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Nature Of Business
-                            </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "NatureOfBusiness": "Sales"
-                                    }
-                                </div>
-                            </div>
-                            <br />
-
-                            <div class="row">
-                            <div class="col-sm-2 ">BuildingPlan</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Building plan attachment
-                            </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "BuildingPlan": "plan.pdf"
-                                    }
-                                </div>
-                            </div>
-                            <br />
-
-                            <div class="row">
-                            <div class="col-sm-2 ">BuildingDescription</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Building plan Description
-                            </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">No</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "BuildingPlan": "Building Description in text"
-                                    }
-                                </div>
-                            </div>
-                            <br />
-
-                            <div class="row">
-                            <div class="col-sm-2 ">TotalLand</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Land Area
-                            </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">Int</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "TotalLand": 10
-                                    }
-                                </div>
-                            </div>
-                            <br />
-
-                            <div class="row">
-                            <div class="col-sm-2 ">RoadFromCouncil</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Description of Road From Council
-                            </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "RoadFromCouncil": "Road"
-                                    }
-                                </div>
-                            </div>
-                            <br />
-
-                            <div class="row">
-                            <div class="col-sm-2 ">OwnerName</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Name of Owner
-                            </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "OwnerName": "Owner"
-                                    }
-                                </div>
-                            </div>
-                            <br />
-
-                            <div class="row">
-                            <div class="col-sm-2 ">CurrentFirePlan</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Current fire protection plan description
-                            </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "CurrentFirePlan": "Plan"
-                                    }
-                                </div>
-                            </div>
-                            <br />                           
-
-                            <div class="row">
-                            <div class="col-sm-2 ">Email</div>
-                            <div class="col-sm-2 ">Description</div>
-                            <div class="col-sm-8 ">
-                                Email
-                            </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "Email": "user@mail.com"
-                                    }
-                                </div>
-                            </div>
-                            <br />                           
-
-                            <div class="row">
-                                <div class="col-sm-2 ">ClientID</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    To identify user.
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "ClientID":"TestId"
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-                            <!------------------------------------------------------- SuperApp --------------------------------------------------------------------------------------->
-                            <div class="row">
-                                <div class="col-sm-2 ">ApplicantName</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Applicant Name
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "ApplicantName": "Applicant Name"
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">BOwnerName</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Building Owner Name
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "BOwnerName": "Owner Name"
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">LesseeName</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Lessee Name
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">No</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "LesseeName": ""
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">EmergencyContact</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Emergency Contact Person
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "EmergencyContact": "Emergency Contact Person"
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">BAddress</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Building Address
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "BAddress": "Company Name, Colombo rd."
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">OtherAddresses</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Other Addresses
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">No</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "OtherAddresses": ""
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">DistRoadSigns</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Distinguishing Road Signs
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">No</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "DistRoadSigns": ""
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">ShortestRoad</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Shortest road to the company
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "ShortestRoad": "road description"
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">BTelephone</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Building Telephone
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "BTelephone": "0710457845"
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">Mobile</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Mobile
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "Mobile": "0710457845"
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">LandArea</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Land Area
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">int</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "LandArea": 5
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">Capacity</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Building Capacity
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">int</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "Capacity": 25
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">Stories</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Number of Stories
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">int</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "Stories": 5
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">Construction</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Construction
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">No</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "Construction": ""
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">BuildType</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    BuildType
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">No</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "BuildType": ""
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">UnapprovedBuildings</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    If there are Unapproved Buildings
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">No</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "UnapprovedBuildings": ""
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">PlanAvailability</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Plan Availability
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "PlanAvailability": "available"
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">Exitways</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Exit ways
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "Exitways": "two exit ways"
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">EmergencyExits</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Emergency Exits
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "EmergencyExits": "Description of exits"
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">DayManpower</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Manpower in day time
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">int</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "DayManpower": 10
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">NightManpower</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Manpower in night time
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">int</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "NightManpower": 10
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">TankCapacity</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Water tank capacity
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">int</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "TankCapacity": 10
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">CommonTank</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Common tank
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "CommonTank": "Common tank info."
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">FirehoseLocation</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Fire hose location
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "FirehoseLocation": "Fire hose location info."
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">ElecPhase</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Electricity Phase
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "ElecPhase": "Electricity phase info."
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">Generator</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Generator info
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "Generator": "Generator info."
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">CurrentCircuit</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Current circuit info
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "CurrentCircuit": "Current circuit info."
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-                        </div>
-                    </div>
-                    <div style="overflow-y: hidden; overflow-x: hidden;">
-                        <div>
-                            <div>Response</div>
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-3 ">Response type</div>
-                                <div class="col-sm-9">JSON</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 ">Response Status</div>
-                                <div class="col-sm-9">200 - OK</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 ">Response values</div>
-                                <div class="col-sm-9">
-                                    { 
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ReturnValue": "OK",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ReturnMessage": "Application successfully updated.",
                                     <br />
                                     }
                                 </div>
@@ -4371,549 +2482,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <%--=================================== 09. Hold Application ====================================================================--%>
-                <div id="apiAppHold">
-                    <h3 class="heading">Hold Municipal Application</h3>
-                    <div>
-                        <div>
-                            <div>Introduction</div>
-                        </div>
-                        <div class="pre row">
-                            <div class="col-sm-12 ">This API helps to hold a municipal application</div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>Base URL</div>
-                        </div>
-                        <div class="pre row">
-                            <div class="col-sm-12 ">https://firecertificate-api.nekfa.com/api/FireAppHold</div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>Request type</div>
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-3 ">Method</div>
-                                <div class="col-sm-9">POST</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 ">Content type</div>
-                                <div class="col-sm-9">application/json</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div>
-                            <div>List of parameters</div>
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-2 ">Id</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Application id.
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">Int</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "Id": 201
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-                             <div class="row">
-                                <div class="col-sm-2 ">RejectReason</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Hold reason
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">No</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "RejectReason": "Hold Reason"
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">ClientID</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    To identify user.
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "ClientID":"TestId"
-                                    }
-                                </div>
-                            </div>
-                            <br />
-
-
-                        </div>
-                    </div>
-                    <div style="overflow-y: hidden; overflow-x: hidden;">
-                        <div>
-                            <div>Response</div>
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-3 ">Response type</div>
-                                <div class="col-sm-9">JSON</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 ">Response Status</div>
-                                <div class="col-sm-9">200 - OK</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 ">Response values</div>
-                                <div class="col-sm-9">
-                                    { 
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ReturnValue": "OK",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ReturnMessage": "Application Successfully rejected.",
-                                    <br />
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>ReturnMessageInfo List</div>
-                            <br />
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-12 ">
-                                    "ReturnMessageInfo" is 2nd arry of the response and it has two objects "ReturnValue" and "ReturnMessage".
-                                </div>
-                            </div>
-                            <br />
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-5 ">Description</div>
-                                <div class="col-sm-2 ">ReturnValue</div>
-                                <div class="col-sm-5">ReturnMessage</div>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-5 ">If process successfully complete</div>
-                                <div class="col-sm-2 ">"OK"</div>
-                                <div class="col-sm-5">"Data found etc..."</div>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-5 ">If any error occured</div>
-                                <div class="col-sm-2 ">"Error"</div>
-                                <div class="col-sm-5">"Invalid Client ID, Connection not found etc..."</div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <%--=================================== 10. Issue Application ===================================================================--%>
-                <div id="apiAppIssue">
-                    <h3 class="heading">Issue Municipal Application</h3>
-                    <div>
-                        <div>
-                            <div>Introduction</div>
-                        </div>
-                        <div class="pre row">
-                            <div class="col-sm-12 ">This API helps to Issue a municipal application</div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>Base URL</div>
-                        </div>
-                        <div class="pre row">
-                            <div class="col-sm-12 ">https://firecertificate-api.nekfa.com/api/FireAppIssue</div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>Request type</div>
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-3 ">Method</div>
-                                <div class="col-sm-9">POST</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 ">Content type</div>
-                                <div class="col-sm-9">application/json</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div>
-                            <div>List of parameters</div>
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-2 ">Id</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Application id.
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">int</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "Id": 201
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">ClientID</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    To identify user.
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "ClientID":"TestId"
-                                    }
-                                </div>
-                            </div>
-                            <br />
-
-
-                        </div>
-                    </div>
-                    <div style="overflow-y: hidden; overflow-x: hidden;">
-                        <div>
-                            <div>Response</div>
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-3 ">Response type</div>
-                                <div class="col-sm-9">JSON</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 ">Response Status</div>
-                                <div class="col-sm-9">200 - OK</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 ">Response values</div>
-                                <div class="col-sm-9">
-                                    { 
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ReturnValue": "OK",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ReturnMessage": "Application Successfully Issued.",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AppId": 0
-                                    <br />
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>ReturnMessageInfo List</div>
-                            <br />
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-12 ">
-                                    "ReturnMessageInfo" is 2nd arry of the response and it has two objects "ReturnValue" and "ReturnMessage".
-                                </div>
-                            </div>
-                            <br />
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-5 ">Description</div>
-                                <div class="col-sm-2 ">ReturnValue</div>
-                                <div class="col-sm-5">ReturnMessage</div>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-5 ">If process successfully complete</div>
-                                <div class="col-sm-2 ">"OK"</div>
-                                <div class="col-sm-5">"Data found etc..."</div>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-5 ">If any error occured</div>
-                                <div class="col-sm-2 ">"Error"</div>
-                                <div class="col-sm-5">"Invalid Client ID, Connection not found etc..."</div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <%--=================================== 11. Set Collection Method Application ===================================================--%>
-                <div id="apiAppCollect">
-                    <h3 class="heading">Set Collection Method Application</h3>
-                    <div>
-                        <div>
-                            <div>Introduction</div>
-                        </div>
-                        <div class="pre row">
-                            <div class="col-sm-12 ">This API helps to Set collection method</div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>Base URL</div>
-                        </div>
-                        <div class="pre row">
-                            <div class="col-sm-12 ">https://firecertificate-api.nekfa.com/api/FireAppCollect</div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>Request type</div>
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-3 ">Method</div>
-                                <div class="col-sm-9">POST</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 ">Content type</div>
-                                <div class="col-sm-9">application/json</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div>
-                            <div>List of parameters</div>
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-2 ">Id</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Application id.
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">int</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "Id": 201
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">ClientID</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    To identify user.
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "ClientID":"TestId"
-                                    }
-                                </div>
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">CollectMethod</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    To identify user.
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "CollectMethod":"Post"
-                                    }
-                                </div>
-                            </div>
-                            <br />
-
-                        </div>
-                    </div>
-                    <div style="overflow-y: hidden; overflow-x: hidden;">
-                        <div>
-                            <div>Response</div>
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-3 ">Response type</div>
-                                <div class="col-sm-9">JSON</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 ">Response Status</div>
-                                <div class="col-sm-9">200 - OK</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 ">Response values</div>
-                                <div class="col-sm-9">
-                                    { 
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ReturnValue": "OK",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ReturnMessage": "Application Collection method set.",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AppId": 0
-                                    <br />
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>ReturnMessageInfo List</div>
-                            <br />
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-12 ">
-                                    "ReturnMessageInfo" is 2nd arry of the response and it has two objects "ReturnValue" and "ReturnMessage".
-                                </div>
-                            </div>
-                            <br />
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-5 ">Description</div>
-                                <div class="col-sm-2 ">ReturnValue</div>
-                                <div class="col-sm-5">ReturnMessage</div>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-5 ">If process successfully complete</div>
-                                <div class="col-sm-2 ">"OK"</div>
-                                <div class="col-sm-5">"Data found etc..."</div>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-5 ">If any error occured</div>
-                                <div class="col-sm-2 ">"Error"</div>
-                                <div class="col-sm-5">"Invalid Client ID, Connection not found etc..."</div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </div>                
                 <%--=================================== 12. Assign Supervisor ===================================================================--%>
                 <div id="apiAssignSupervisor">
                     <h3 class="heading">Assign Supervisor</h3>
@@ -6255,317 +3824,6 @@
                                 </div>
                             </div>
                         </div>
-                <%--=================================== 17. Pending Municipal applications by date ==============================================--%>
-                <div id="apiPendingbyDate">
-                    <h3 class="heading">Get Pending Municipal Applications Between given dates</h3>
-                    <div>
-                        <div>
-                            <div>Introduction</div>
-                        </div>
-                        <div class="pre row">
-                            <div class="col-sm-12 ">This API helps to get a list of pending municipal council applications between given dates</div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>Base URL</div>
-                        </div>
-                        <div class="pre row">
-                            <div class="col-sm-12 ">https://firecertificate-api.nekfa.com/api/FireAppPendingByDate</div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>Request type</div>
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-3 ">Method</div>
-                                <div class="col-sm-9">POST</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 ">Content type</div>
-                                <div class="col-sm-9">application/json</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div>
-                            <div>List of parameters</div>
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-2 ">StartDate</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Start date of the search
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "StartDate":"2023/06/01 00:00"
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">EndDate</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    End date of the search
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "EndDate":"2023/06/01 00:00"
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">ClientID</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    To identify user.
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "ClientID":"TestId"
-                                    }
-                                </div>
-
-                            </div>
-
-                            <br />
-                        </div>
-                    </div>
-                    <div style="height: 400px; overflow-y: scroll; overflow-x: hidden;">
-                        <div>
-                            <div>Response</div>
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-3 ">Response type</div>
-                                <div class="col-sm-9">JSON</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 ">Response Status</div>
-                                <div class="col-sm-9">200 - OK</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 ">Response values</div>
-                                <div class="col-sm-9">
-                                    { 
-                                    &nbsp;&nbsp;"ListFireApplication": [
-                                    <br />
-                                    &nbsp;&nbsp;&nbsp;&nbsp; {
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Id": 1,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CertificateId": "FC004",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CompanyName": "Company1",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Address": "Company1, Colombo 07.",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Telephone": "0710859897",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "DistanceFromCouncil": 7,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "NatureOfBusiness": "Sales",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BuildingPlan": "plan.pdf",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BuildingDescription": "Building Description in text",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "TotalLand": 10,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "RoadFromCouncil": "Highlevel rd.",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "OwnerName": "Owner Name",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CurrentFirePlan": "Fire Extinguishers",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Status": "Pending",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Email": "useremail@mail.com",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "DateApplied": "2023-06-23",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "DateReviewed": "2023-06-23",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "DateActReview": "2023-07-12",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DateIssued": "",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DateAppRej": "",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ClientID": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Supervisor": ""
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "StartDate": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "EndDate": null
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "RejectReason": "",
-                                    <br />                                    
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ApplicantName": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BOwnerName": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "LesseeName": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "EmergencyContact": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BAddress": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "OtherAddresses": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "DistRoadSigns": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ShortestRoad": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BTelephone": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Mobile": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "LandArea": 0,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Capacity": 0,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Stories": 0,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Construction": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BuildType": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "UnapprovedBuildings": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "PlanAvailability": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Exitways": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "EmergencyExits": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "DayManpower": 0,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "NightManpower": 0,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "TankCapacity": 0,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CommonTank": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "FirehoseLocation": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ElecPhase": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Generator": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CurrentCircuit": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "SupervisorVisited": "1",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CollectMethod": ""
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
-                                    <br />
-                                     ],
-                                    <br />
-                                    "ListPayment": null,
-                                    <br />
-                                    "ReturnMessageInfo": {
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; "ReturnValue": "OK",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; "ReturnMessage": "Data found"
-                                    <br />
-                                     }
-                                    <br />
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>ReturnMessageInfo List</div>
-                            <br />
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-12 ">
-                                    "ReturnMessageInfo" is 2nd arry of the response and it has two objects "ReturnValue" and "ReturnMessage".
-                                </div>
-                            </div>
-                            <br />
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-5 ">Description</div>
-                                <div class="col-sm-2 ">ReturnValue</div>
-                                <div class="col-sm-5">ReturnMessage</div>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-5 ">If process successfully complete</div>
-                                <div class="col-sm-2 ">"OK"</div>
-                                <div class="col-sm-5">"Data found etc..."</div>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-5 ">If any error occured</div>
-                                <div class="col-sm-2 ">"Error"</div>
-                                <div class="col-sm-5">"Invalid Client ID, Connection not found etc..."</div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <%--=================================== 18. Approved Municipal applications by date =============================================--%>
                 <div id="apiApprovedbyDate">
                     <h3 class="heading">Get Approved Municipal Applications Between given dates</h3>
@@ -7258,353 +4516,6 @@
                         </div>
                     </div>
                 </div>
-                <%--=================================== 20. Hold Municipal applications by date =================================================--%>
-                <div id="apiHoldbyDate">
-                    <h3 class="heading">Get Hold Municipal Applications Between given dates</h3>
-                    <div>
-                        <div>
-                            <div>Introduction</div>
-                        </div>
-                        <div class="pre row">
-                            <div class="col-sm-12 ">This API helps to get a list of holted municipal council applications between given dates</div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>Base URL</div>
-                        </div>
-                        <div class="pre row">
-                            <div class="col-sm-12 ">https://firecertificate-api.nekfa.com/api/FireAppHoldByDate</div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>Request type</div>
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-3 ">Method</div>
-                                <div class="col-sm-9">POST</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 ">Content type</div>
-                                <div class="col-sm-9">application/json</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div>
-                            <div>List of parameters</div>
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-2 ">StartDate</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Start date of the search
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "StartDate":"2023/06/01 00:00"
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">EndDate</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    End date of the search
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "EndDate":"2023/06/01 00:00"
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">ClientID</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    To identify user.
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "ClientID":"TestId"
-                                    }
-                                </div>
-
-                            </div>
-
-                            <br />
-                        </div>
-                    </div>
-                    <div style="height: 400px; overflow-y: scroll; overflow-x: hidden;">
-                        <div>
-                            <div>Response</div>
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-3 ">Response type</div>
-                                <div class="col-sm-9">JSON</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 ">Response Status</div>
-                                <div class="col-sm-9">200 - OK</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 ">Response values</div>
-                                <div class="col-sm-9">
-                                    { 
-                                    &nbsp;&nbsp;"ListFireApplication": [
-                                    <br />
-                                    &nbsp;&nbsp;&nbsp;&nbsp; {
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Id": 1,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"CertificateId": "FC004",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"CompanyName": "Company1",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Address": "Company1, Colombo 07.",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Telephone": "0710859897",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DistanceFromCouncil": 7,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"NatureOfBusiness": "Sales",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"BuildingPlan": "plan.pdf",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"BuildingDescription": "Building Description in text",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"TotalLand": 10,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"RoadFromCouncil": "Highlevel rd.",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"OwnerName": "Owner Name",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"CurrentFirePlan": "Fire Extinguishers",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Status": "Hold",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Email": "useremail@mail.com",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DateApplied": "2023-06-23",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DateReviewed": "2023-06-23",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DateActReview": "2023-07-12",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DateIssued": "2023-06-23",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DateAppRej": "2023-06-23",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ClientID": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Supervisor": ""
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"StartDate": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"EndDate": null
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"RejectReason": "",
-                                    <br />                                    
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ApplicantName": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BOwnerName": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "LesseeName": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "EmergencyContact": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BAddress": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "OtherAddresses": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "DistRoadSigns": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ShortestRoad": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BTelephone": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Mobile": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "LandArea": 0,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Capacity": 0,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Stories": 0,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Construction": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BuildType": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "UnapprovedBuildings": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "PlanAvailability": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Exitways": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "EmergencyExits": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "DayManpower": 0,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "NightManpower": 0,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "TankCapacity": 0,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CommonTank": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "FirehoseLocation": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ElecPhase": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Generator": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CurrentCircuit": null,                                    
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "SupervisorVisited": "1",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CollectMethod": ""
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
-                                    <br />
-                                     ],
-                                    <br />
-                                    &nbsp;&nbsp;"ListPayment": [
-                                    <br />
-                                    &nbsp;&nbsp;&nbsp;&nbsp; {
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Id": 1,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"CertificateId": "FC004",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Note": "",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"TotAmt": 1500.00,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"User": "TstUser",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Date": "6/2/2023 13:00:",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"PaymentType": "Bank",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"PaidDescription": "Description",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"PaymentID": "123",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"BillNo": "B112",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"BankCharges": 100.00,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ConsultantFee": 1500.00,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InspectionFees": 5000.00,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AnnualCertificate": 0.00,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Postal": 1.44,
-                                    <br />                                                                                                                                                   
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
-                                    <br />
-                                     ],
-                                    <br />
-                                    "ReturnMessageInfo": {
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; "ReturnValue": "OK",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; "ReturnMessage": "Data found"
-                                    <br />
-                                     }
-                                    <br />
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>ReturnMessageInfo List</div>
-                            <br />
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-12 ">
-                                    "ReturnMessageInfo" is 2nd arry of the response and it has two objects "ReturnValue" and "ReturnMessage".
-                                </div>
-                            </div>
-                            <br />
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-5 ">Description</div>
-                                <div class="col-sm-2 ">ReturnValue</div>
-                                <div class="col-sm-5">ReturnMessage</div>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-5 ">If process successfully complete</div>
-                                <div class="col-sm-2 ">"OK"</div>
-                                <div class="col-sm-5">"Data found etc..."</div>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-5 ">If any error occured</div>
-                                <div class="col-sm-2 ">"Error"</div>
-                                <div class="col-sm-5">"Invalid Client ID, Connection not found etc..."</div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <%--=================================== 21. Assigned Municipal applications by date =============================================--%>
                 <div id="apiAssignedbyDate">
                     <h3 class="heading">Get Assigned Municipal Applications Between given dates</h3>
@@ -7952,353 +4863,6 @@
                         </div>
                     </div>
                 </div>
-                <%--=================================== 22. Paid Municipal applications by date =================================================--%>
-                <div id="apiPaidbyDate">
-                    <h3 class="heading">Get Paid Municipal Applications Between given dates</h3>
-                    <div>
-                        <div>
-                            <div>Introduction</div>
-                        </div>
-                        <div class="pre row">
-                            <div class="col-sm-12 ">This API helps to get a list of municipal council applications with inspection charges paid between given dates</div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>Base URL</div>
-                        </div>
-                        <div class="pre row">
-                            <div class="col-sm-12 ">https://firecertificate-api.nekfa.com/api/FireAppPaidByDate</div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>Request type</div>
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-3 ">Method</div>
-                                <div class="col-sm-9">POST</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 ">Content type</div>
-                                <div class="col-sm-9">application/json</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div>
-                            <div>List of parameters</div>
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-2 ">StartDate</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Start date of the search
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "StartDate":"2023/06/01 00:00"
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">EndDate</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    End date of the search
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "EndDate":"2023/06/01 00:00"
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">ClientID</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    To identify user.
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "ClientID":"TestId"
-                                    }
-                                </div>
-
-                            </div>
-
-                            <br />
-                        </div>
-                    </div>
-                    <div style="height: 400px; overflow-y: scroll; overflow-x: hidden;">
-                        <div>
-                            <div>Response</div>
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-3 ">Response type</div>
-                                <div class="col-sm-9">JSON</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 ">Response Status</div>
-                                <div class="col-sm-9">200 - OK</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 ">Response values</div>
-                                <div class="col-sm-9">
-                                    { 
-                                    &nbsp;&nbsp;"ListFireApplication": [
-                                    <br />
-                                    &nbsp;&nbsp;&nbsp;&nbsp; {
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Id": 1,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CertificateId": "FC004",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CompanyName": "Company1",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Address": "Company1, Colombo 07.",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Telephone": "0710859897",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "DistanceFromCouncil": 7,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "NatureOfBusiness": "Sales",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BuildingPlan": "plan.pdf",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BuildingDescription": "Building Description in text",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "TotalLand": 10,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "RoadFromCouncil": "Highlevel rd.",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "OwnerName": "Owner Name",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CurrentFirePlan": "Fire Extinguishers",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Status": "Paid For Inspection",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Email": "useremail@mail.com",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "DateApplied": "2023-06-23",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "DateReviewed": "2023-06-23",
-                                    <br /> 
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DateActReview": "2023-07-12",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "DateIssued": "2023-06-23",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "DateAppRej": "2023-06-23",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ClientID": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Supervisor": ""
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "StartDate": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "EndDate": null
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "RejectReason": "",
-                                    <br />                                    
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ApplicantName": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BOwnerName": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "LesseeName": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "EmergencyContact": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BAddress": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "OtherAddresses": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "DistRoadSigns": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ShortestRoad": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BTelephone": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Mobile": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "LandArea": 0,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Capacity": 0,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Stories": 0,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Construction": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BuildType": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "UnapprovedBuildings": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "PlanAvailability": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Exitways": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "EmergencyExits": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "DayManpower": 0,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "NightManpower": 0,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "TankCapacity": 0,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CommonTank": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "FirehoseLocation": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ElecPhase": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Generator": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CurrentCircuit": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "SupervisorVisited": "1",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CollectMethod": ""
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
-                                    <br />
-                                     ],
-                                    <br />
-                                    &nbsp;&nbsp;"ListPayment": [
-                                    <br />
-                                    &nbsp;&nbsp;&nbsp;&nbsp; {
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Id": 1,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"CertificateId": "FC004",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Note": "",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"TotAmt": 1500.00,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"User": "TstUser",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Date": "6/2/2023 13:00:",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"PaymentType": "Bank",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"PaidDescription": "Description",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"PaymentID": "123",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"BillNo": "B112",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"BankCharges": 100.00,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ConsultantFee": 1500.00,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InspectionFees": 5000.00,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AnnualCertificate": 0.00,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Postal": 1.44,
-                                    <br />     
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
-                                    <br />
-                                     ],
-                                    <br />
-                                    "ReturnMessageInfo": {
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; "ReturnValue": "OK",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; "ReturnMessage": "Data found"
-                                    <br />
-                                     }
-                                    <br />
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>ReturnMessageInfo List</div>
-                            <br />
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-12 ">
-                                    "ReturnMessageInfo" is 2nd arry of the response and it has two objects "ReturnValue" and "ReturnMessage".
-                                </div>
-                            </div>
-                            <br />
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-5 ">Description</div>
-                                <div class="col-sm-2 ">ReturnValue</div>
-                                <div class="col-sm-5">ReturnMessage</div>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-5 ">If process successfully complete</div>
-                                <div class="col-sm-2 ">"OK"</div>
-                                <div class="col-sm-5">"Data found etc..."</div>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-5 ">If any error occured</div>
-                                <div class="col-sm-2 ">"Error"</div>
-                                <div class="col-sm-5">"Invalid Client ID, Connection not found etc..."</div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <%--=================================== 23. Issued Municipal applications by date ===============================================--%>
                 <div id="apiIssuedbyDate">
                     <h3 class="heading">Get Paid Municipal Applications Between given dates</h3>
@@ -8488,353 +5052,6 @@
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DateIssued": "2023-06-23",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DateAppRej": "2023-06-23",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ClientID": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Supervisor": ""
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "StartDate": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "EndDate": null
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "RejectReason": "",
-                                    <br />                                    
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ApplicantName": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BOwnerName": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "LesseeName": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "EmergencyContact": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BAddress": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "OtherAddresses": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "DistRoadSigns": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ShortestRoad": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BTelephone": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Mobile": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "LandArea": 0,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Capacity": 0,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Stories": 0,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Construction": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BuildType": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "UnapprovedBuildings": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "PlanAvailability": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Exitways": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "EmergencyExits": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "DayManpower": 0,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "NightManpower": 0,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "TankCapacity": 0,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CommonTank": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "FirehoseLocation": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ElecPhase": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Generator": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CurrentCircuit": null,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "SupervisorVisited": "1",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CollectMethod": ""
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
-                                    <br />
-                                     ],
-                                    <br />
-                                    &nbsp;&nbsp;"ListPayment": [
-                                    <br />
-                                    &nbsp;&nbsp;&nbsp;&nbsp; {
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Id": 1,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"CertificateId": "FC004",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Note": "",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"TotAmt": 1500.00,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"User": "TstUser",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Date": "6/2/2023 13:00:",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"PaymentType": "Bank",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"PaidDescription": "Description",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"PaymentID": "123",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"BillNo": "B112",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"BankCharges": 100.00,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"ConsultantFee": 1500.00,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"InspectionFees": 5000.00,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"AnnualCertificate": 0.00,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"Postal": 1.44,
-                                    <br />                                                                                                                                                   
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; }
-                                    <br />
-                                     ],
-                                    <br />
-                                    "ReturnMessageInfo": {
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; "ReturnValue": "OK",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; "ReturnMessage": "Data found"
-                                    <br />
-                                     }
-                                    <br />
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>ReturnMessageInfo List</div>
-                            <br />
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-12 ">
-                                    "ReturnMessageInfo" is 2nd arry of the response and it has two objects "ReturnValue" and "ReturnMessage".
-                                </div>
-                            </div>
-                            <br />
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-5 ">Description</div>
-                                <div class="col-sm-2 ">ReturnValue</div>
-                                <div class="col-sm-5">ReturnMessage</div>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-5 ">If process successfully complete</div>
-                                <div class="col-sm-2 ">"OK"</div>
-                                <div class="col-sm-5">"Data found etc..."</div>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-5 ">If any error occured</div>
-                                <div class="col-sm-2 ">"Error"</div>
-                                <div class="col-sm-5">"Invalid Client ID, Connection not found etc..."</div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <%--=================================== 24. PaidForCert Municipal applications by date ==========================================--%>
-                <div id="apiPaidForCertbyDate">
-                    <h3 class="heading">Get PaidForCert Municipal Applications Between given dates</h3>
-                    <div>
-                        <div>
-                            <div>Introduction</div>
-                        </div>
-                        <div class="pre row">
-                            <div class="col-sm-12 ">This API helps to get a list of municipal council applications of PaidForCert status between given dates</div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>Base URL</div>
-                        </div>
-                        <div class="pre row">
-                            <div class="col-sm-12 ">https://firecertificate-api.nekfa.com/api/FireAppPaidForCertByDate</div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>Request type</div>
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-3 ">Method</div>
-                                <div class="col-sm-9">POST</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 ">Content type</div>
-                                <div class="col-sm-9">application/json</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div>
-                            <div>List of parameters</div>
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-2 ">StartDate</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    Start date of the search
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "StartDate":"2023/06/01 00:00"
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">EndDate</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    End date of the search
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "EndDate":"2023/06/01 00:00"
-                                    }
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <div class="row">
-                                <div class="col-sm-2 ">ClientID</div>
-                                <div class="col-sm-2 ">Description</div>
-                                <div class="col-sm-8 ">
-                                    To identify user.
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Required</div>
-                                <div class="col-sm-8 ">Yes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Data type</div>
-                                <div class="col-sm-8 ">String</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2 "></div>
-                                <div class="col-sm-2 ">Example</div>
-                                <div class="col-sm-8 ">
-                                    {
-                                      "ClientID":"TestId"
-                                    }
-                                </div>
-
-                            </div>
-
-                            <br />
-                        </div>
-                    </div>
-                    <div style="height: 400px; overflow-y: scroll; overflow-x: hidden;">
-                        <div>
-                            <div>Response</div>
-                        </div>
-                        <div class="pre">
-                            <div class="row">
-                                <div class="col-sm-3 ">Response type</div>
-                                <div class="col-sm-9">JSON</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 ">Response Status</div>
-                                <div class="col-sm-9">200 - OK</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3 ">Response values</div>
-                                <div class="col-sm-9">
-                                    { 
-                                    &nbsp;&nbsp;"ListFireApplication": [
-                                    <br />
-                                    &nbsp;&nbsp;&nbsp;&nbsp; {
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Id": 1,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CertificateId": "FC004",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CompanyName": "Company1",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Address": "Company1, Colombo 07.",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Telephone": "0710859897",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "DistanceFromCouncil": 7,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "NatureOfBusiness": "Sales",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BuildingPlan": "plan.pdf",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "BuildingDescription": "Building Description in text",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "TotalLand": 10,
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "RoadFromCouncil": "Highlevel rd.",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "OwnerName": "Owner Name",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "CurrentFirePlan": "Fire Extinguishers",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Status": "Paid For Certificate",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "Email": "useremail@mail.com",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "DateApplied": "2023-06-23",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "DateReviewed": "2023-06-23",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;"DateActReview": "2023-07-12",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "DateIssued": "2023-06-23",
-                                    <br />
-                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "DateAppRej": "2023-06-23",
                                     <br />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; "ClientID": null,
                                     <br />

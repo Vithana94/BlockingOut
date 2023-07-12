@@ -23,7 +23,6 @@ namespace api_rate.Models
         public string Surveyor { get; set; }
         public string SizeOfLand { get; set; }
         public string CurrentUse { get; set; }
-        public string DevLandBlock { get; set; }
         public string LandFill { get; set; }
         public string LevelsOfRoad { get; set; }
         public string AttLandDevCorp { get; set; }
@@ -54,7 +53,10 @@ namespace api_rate.Models
         public string Status { get; set; }
         public string AppliedDate { get; set; }
         public string AppRejDate { get; set; }
-        public string ExpDate { get; set; } 
+        public string ExpDate { get; set; }
+
+        public string StartDate { get; set; }
+        public string EndDate { get; set; }
         
     }
 }

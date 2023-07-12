@@ -53,7 +53,7 @@ namespace api_rate.Controllers
                         _appsubmit.SaveApplication(objBlockingOut, ref objReturnMsg);
                         
                         // Get Id for return
-                        // objBlockingRet = _getData.GetApplicationByAppId(objBlockingOut, ref objReturnMsg);
+                        objBlockingRet = _getData.GetApplicationByAppId(objBlockingOut, ref objReturnMsg);
 
                         if (objReturnMsg.ReturnValue == "OK")
                         {
@@ -122,7 +122,7 @@ namespace api_rate.Controllers
                 objReturnMsg.ReturnMessage = ex.Message.ToString().Trim();
             }
 
-            //objReturnMsg.AppId = objFireApp.Id;
+            objReturnMsg.AppId = objBlockingRet.ID;
             return objReturnMsg;
         }
     }
